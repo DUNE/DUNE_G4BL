@@ -1,0 +1,147 @@
+##########################- H4 placement #################################
+
+#param -unset onlyVLE=0
+#if $onlyVLE==0
+
+place MSNH rename=B1 By=$B1y x=+0.56 z=27250.0 rotation=Y-0.08021
+corner z=27250.0 rotation=Y-0.16043 radiusCut=200*1000
+
+place MSNH rename=B2 By=$B2y x=+0.70 z=30800.0 rotation=Y-0.10027
+corner z=30800.0 rotation=Y-0.20054
+
+place QNL rename=Q1 gradient=$Q1 z=34290.0
+place QNL rename=Q2 gradient=$Q2 z=41150.0
+place QNL rename=Q3 gradient=$Q3 z=48740.0
+
+place MBNV rename=B3a By=$B3y y=-2.13626 z=53285.0 rotation=Z90,X-0.19584
+corner z=53285.0 rotation=X-0.391674
+
+place MBNV rename=B4a By=$B4y y=-2.13626 z=58945.0 rotation=Z90,X-0.19584
+corner z=58945.0 rotation=X-0.391674
+
+place MBNV rename=B4b By=$B4y y=-2.13626 z=64605.0 rotation=Z90,X-0.19584
+corner z=64605.0 rotation=X-0.391674
+
+place Collimator rename=C1a z=68010.0 x=-95.0
+place Collimator rename=C1b z=68010.0 x=+95.0
+
+place MBNV rename=B3b By=$B3y y=-2.13626 z=71415.0 rotation=Z90,X-0.19584
+corner z=71415.0 rotation=X-0.391674
+
+place MBNV rename=B3c By=$B3y y=-2.13626 z=77075.0 rotation=Z90,X-0.19584
+corner z=77075.0 rotation=X-0.391674
+
+place MBNV rename=B4c By=$B4y y=-2.13626 z=82735.0 rotation=Z90,X-0.19584
+corner z=82735.0 rotation=X-0.391674
+
+place QNL rename=Q4 gradient=$Q4 z=87280.0
+place QNL rename=Q5 gradient=$Q5 z=97498.0
+
+place MCAH rename=B5a By=$B5y x=-0.39609 z=116838.0 rotation=Y+0.07262
+corner z=116838.0 rotation=Y+0.14524
+
+place MCAH rename=B5b By=$B5y x=-0.39609 z=120138.0 rotation=Y+0.07262
+corner z=120138.0 rotation=Y+0.14524
+
+place MCAH rename=B5c By=$B5y x=-0.39609 z=123438.0 rotation=Y+0.07262
+corner z=123438.0 rotation=Y+0.14524
+
+place MCAH rename=B5d By=$B5y x=-0.39609 z=126738.0 rotation=Y+0.07262
+corner z=126738.0 rotation=Y+0.14524
+
+place Collimator rename=C2a z=129660.0 x=-95.0
+place Collimator rename=C2b z=129660.0 x=+95.0
+place Collimator rename=C3a z=129660.0 y=-100.0
+place Collimator rename=C3b z=129660.0 y=+100.0
+
+place QNL rename=Q6a gradient=$Q6 z=132010.0
+
+place MCAH rename=B5e By=$B5y x=-0.39609 z=137282.0 rotation=Y0.07262
+corner z=137282.0 rotation=Y0.14524
+
+place MCAH rename=B5f By=$B5y x=-0.39609 z=140582.0 rotation=Y0.07262
+corner z=140582.0 rotation=Y0.14524
+
+place MCAH rename=B5g By=$B5y x=-0.39609 z=143882.0 rotation=Y0.07262
+corner z=143882.0 rotation=Y0.14524
+
+place MCAH rename=B5h By=$B5y x=-0.39609 z=147182.0 rotation=Y0.07262
+corner z=147182.0 rotation=Y0.14524
+
+place QNL rename=Q7a gradient=$Q7 z=166522.0
+place QNL rename=Q8a gradient=$Q8 z=176740.0
+
+place Collimator rename=C4a z=179030.0 y=-95.0
+place Collimator rename=C4b z=179030.0 y=+95.0
+
+place Collimator rename=C5a z=196010.0 x=-95.0
+place Collimator rename=C5b z=196010.0 x=+95.0
+
+place Collimator rename=C6a z=196010.0 y=-100.0
+place Collimator rename=C6b z=196010.0 y=+100.0
+
+place Collimator rename=C7a z=212990.0 y=-100.0
+place Collimator rename=C7b z=212990.0 y=+100.0
+
+place QNL rename=Q8b gradient=$Q8 z=215280.0
+place QNL rename=Q7b gradient=$Q7 z=225498.0
+ 
+place QNL rename=Q6b gradient=$Q6 z=260010.0
+place QNL rename=Q9 gradient=$Q9 z=294522.0
+place QNL rename=Q10 gradient=$Q10 z=304740.0
+
+place MBNV rename=B6a By=$B6y y=+2.14001 z=309285.0 rotation=Z90,X+0.19618
+corner z=309285.0 rotation=X+0.39236
+
+place MBNV rename=B7a By=$B7y y=+2.14001 z=314945.0 rotation=Z90,X+0.19618
+corner z=314945.0 rotation=X+0.39236
+
+place MBNV rename=B7b By=$B7y y=+2.14001 z=320605.0 rotation=Z90,X+0.19618
+corner z=320605.0 rotation=X+0.39236
+
+place MBNV rename=B6b By=$B6y y=+2.14001 z=327415.0 rotation=Z90,X+0.19618
+corner z=327415.0 rotation=X+0.39236
+
+place MBNV rename=B6c By=$B6y y=+2.14001 z=333075.0 rotation=Z90,X+0.19618
+corner z=333075.0 rotation=X+0.39236
+
+place MBNV rename=B7c By=$B7y y=+2.14001 z=338735.0 rotation=Z90,X+0.19618
+corner z=338735.0 rotation=X+0.39236
+
+place QNL rename=Q11 gradient=$Q11 z=343280.0
+place QNL rename=Q12 gradient=$Q12 z=353498.0
+place QNL rename=Q13 gradient=$Q13 z=370180.0
+
+place MBNH rename=B8a By=$B8y x=2.25001 z=376655.0 rotation=Y-0.20626
+corner z=376655.0 rotation=Y-0.41253
+
+place MBNH rename=B8b By=$B8y x=2.25001 z=382315.0 rotation=Y-0.20626
+corner z=382315.0 rotation=Y-0.41253
+
+place Collimator rename=C8a z=385720.0 y=-95.0
+place Collimator rename=C8b z=385720.0 y=+95.0
+
+place MBNH rename=B9a By=$B9y x=2.25001 z=393595.0 rotation=Y-0.20626
+corner z=393595.0 rotation=Y-0.41253
+
+place MBNH rename=B9b By=$B9y x=2.25001 z=399475.0 rotation=Y-0.20626
+corner z=399475.0 rotation=Y-0.41253
+
+place QNL rename=Q14 gradient=$Q14 z=422522.0
+place QNL rename=Q15 gradient=$Q15 z=444060.0
+
+place Collimator rename=C9a z=452010.0 x=-95.0
+place Collimator rename=C9b z=452010.0 x=+95.0
+place Collimator rename=C10a z=452010.0 y=-100.0
+place Collimator rename=C10b z=452010.0 y=+100.0
+
+place QNL rename=Q16a gradient=$Q16 z=475092.0
+place QNL rename=Q16b gradient=$Q16 z=478522.0
+
+place MBPH rename=B17a By=$B17ax x=-1.7000262 z=633895.0 rotation=Y-0.389611301
+corner z=633895.0 rotation=Y-0.779222601
+
+place MBPH rename=B17b By=$B17bx x=-1.7000262 z=652629.0 rotation=Y-0.389611301
+corner z=652635.0 rotation=Y-0.779222601
+
+

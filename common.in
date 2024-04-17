@@ -1,0 +1,363 @@
+
+###############################################################
+
+#group mbplBench length=2000
+#box iron1 height=310 width=1740 length=2000 material=Fe  color=1,0,0,0.3
+#box iron2 height=540 width=310 length=2000 material=Fe color=1,0,0,0.3
+#box iron3 height=200 width=520 length=2000 material=Fe color=1,0,0,0.3
+#box copper1 height=200 width=300 length=2000 material=Cu color=1,1,0,0.3
+
+#place iron1 z=0 y=425
+#place iron1 z=0 y=-425
+#place iron2 z=0 x=-715
+#place iron2 z=0 x=715
+#place iron3 z=0 y=170
+#place iron3 z=0 y=-170
+#place copper1 z=0 y=170 x=410
+#place copper1 z=0 y=170 x=-410
+#place copper1 z=0 y=-170 x=410
+#place copper1 z=0 y=-170 x=-410
+#endgroup
+
+###############################################################
+
+#group mbpsH4 length=1800
+#box iron1 height=310 width=1740 length=1000 material=Fe  color=1,0,0,1
+#box iron2 height=540 width=310 length=1000 material=Fe color=1,0,0,1
+#box iron3 height=200 width=520 length=1000 material=Fe color=1,0,0,1
+#box copper1 height=200 width=300 length=1650 material=Cu color=1,1,0,1
+#box copper2 height=200 width=520 length=300 material=Cu color=1,1,0,1
+#tess pipe file=MBPS_v1.pipe material=STAINLESS-STEEL
+
+#place iron1 z=0 y=425
+#place iron1 z=0 y=-425
+#place iron2 z=0 x=-715
+#place iron2 z=0 x=715
+#place iron3 z=0 y=170
+#place iron3 z=0 y=-170
+#place copper1 z=0 y=170 x=410
+#place copper1 z=0 y=170 x=-410
+#place copper1 z=0 y=-170 x=410
+#place copper1 z=0 y=-170 x=-410
+#place copper2 z=675 y=-170 x=0
+#place copper2 z=-675 y=-170 x=0
+#place copper2 z=675 y=170 x=0
+#place copper2 z=-675 y=170 x=0
+
+#place pipe z=0 x=0 y=0
+#endgroup
+
+###############################################################
+
+#group mbpsH4_v2 length=1800
+#box iron1 height=310 width=1740 length=1000 material=Fe  color=1,0,0,1
+#box iron2 height=540 width=310 length=1000 material=Fe color=1,0,0,1
+#box iron3 height=200 width=520 length=1000 material=Fe color=1,0,0,1
+#box copper1 height=200 width=300 length=1650 material=Cu color=1,1,0,1
+#box copper2 height=200 width=520 length=300 material=Cu color=1,1,0,1
+#tess pipe file=MBPS_v2.pipe material=STAINLESS-STEEL
+
+#place iron1 z=0 y=425
+#place iron1 z=0 y=-425
+#place iron2 z=0 x=-715
+#place iron2 z=0 x=715
+#place iron3 z=0 y=170
+#place iron3 z=0 y=-170
+#place copper1 z=0 y=170 x=410
+#place copper1 z=0 y=170 x=-410
+#place copper1 z=0 y=-170 x=410
+#place copper1 z=0 y=-170 x=-410
+#place copper2 z=675 y=-170 x=0
+#place copper2 z=-675 y=-170 x=0
+#place copper2 z=675 y=170 x=0
+#place copper2 z=-675 y=170 x=0
+
+#place pipe z=0 x=0 y=0
+#endgroup
+
+###############################################################
+
+#group mbpsH4_v3 length=1800
+#box iron1 height=310 width=1740 length=1000 material=Fe  color=1,0,0,1
+#box iron2 height=540 width=310 length=1000 material=Fe color=1,0,0,1
+#box iron3 height=200 width=520 length=1000 material=Fe color=1,0,0,1
+#box copper1 height=200 width=300 length=1650 material=Cu color=1,1,0,1
+#box copper2 height=200 width=520 length=300 material=Cu color=1,1,0,1
+
+#place iron1 z=0 y=425
+#place iron1 z=0 y=-425
+#place iron2 z=0 x=-715
+#place iron2 z=0 x=715
+#place iron3 z=0 y=170
+#place iron3 z=0 y=-170
+#place copper1 z=0 y=170 x=410
+#place copper1 z=0 y=170 x=-410
+#place copper1 z=0 y=-170 x=410
+#place copper1 z=0 y=-170 x=-410
+#place copper2 z=675 y=-170 x=0
+#place copper2 z=-675 y=-170 x=0
+#place copper2 z=675 y=170 x=0
+#place copper2 z=-675 y=170 x=0
+
+#endgroup
+
+###############################################################
+
+#group mbplTiltedPipe length=2820
+#box iron1 height=310 width=1740 length=2000 material=Fe  color=1,0,0,1
+#box iron2 height=540 width=310 length=2000 material=Fe color=1,0,0,1
+#box iron3 height=200 width=520 length=2000 material=Fe color=1,0,0,1
+#box copper1 height=200 width=300 length=2650 material=Cu color=1,1,0,1
+#box copper2 height=200 width=520 length=300 material=Cu color=1,1,0,1
+#tess pipe file=MBPL_TILTED.pipe material=STAINLESS-STEEL
+
+
+#place iron1 z=0 y=425
+#place iron1 z=0 y=-425
+#place iron2 z=0 x=-715
+#place iron2 z=0 x=715
+#place iron3 z=0 y=170
+#place iron3 z=0 y=-170
+#place copper1 z=0 y=170 x=410
+#place copper1 z=0 y=170 x=-410
+#place copper1 z=0 y=-170 x=410
+#place copper1 z=0 y=-170 x=-410
+#place copper2 z=1175 y=-170 x=0
+#place copper2 z=-1175 y=-170 x=0
+#place copper2 z=1175 y=170 x=0
+#place copper2 z=-1175 y=170 x=0
+
+#place pipe z=0 x=0 y=0  
+#endgroup
+
+###############################################################
+
+#group mbpl length=3000
+#box iron1 height=310 width=1740 length=2000 material=Fe  color=1,0,0,1
+#box iron2 height=540 width=310 length=2000 material=Fe color=1,0,0,1
+#box iron3 height=200 width=520 length=2000 material=Fe color=1,0,0,1
+#box copper1 height=200 width=300 length=2650 material=Cu color=1,1,0,1
+#box copper2 height=200 width=520 length=300 material=Cu color=1,1,0,1
+#tess pipe file=MBPL.pipe color=0.7,0.7,0.7,0.3 material=STAINLESS-STEEL
+
+#place iron1 z=0 y=425
+#place iron1 z=0 y=-425
+#place iron2 z=0 x=-715
+#place iron2 z=0 x=715
+#place iron3 z=0 y=170
+#place iron3 z=0 y=-170
+#place copper1 z=0 y=170 x=410
+#place copper1 z=0 y=170 x=-410
+#place copper1 z=0 y=-170 x=410
+#place copper1 z=0 y=-170 x=-410
+#place copper2 z=1175 y=-170 x=0
+#place copper2 z=-1175 y=-170 x=0
+#place copper2 z=1175 y=170 x=0
+#place copper2 z=-1175 y=170 x=0
+
+#place pipe z=0 x=0 y=0
+#endgroup
+
+###############################################################
+
+#group mbplTiltedPipe_v3 length=2420
+#box iron1 height=310 width=1740 length=2000 material=Fe  color=1,0,0,1
+#box iron2 height=540 width=310 length=2000 material=Fe color=1,0,0,1
+#box iron3 height=200 width=520 length=2000 material=Fe color=1,0,0,1
+#box copper1 height=200 width=300 length=2000 material=Cu color=1,1,0,1
+#box copper2 height=200 width=520 length=300 material=Cu color=1,1,0,1
+# tess pipe file=MBPL_TILTED.pipe color=0.7,0.7,0.7,0.3 material=STAINLESS-STEEL
+
+
+#place iron1 z=0 y=425
+#place iron1 z=0 y=-425
+#place iron2 z=0 x=-715
+#place iron2 z=0 x=715
+#place iron3 z=0 y=170
+#place iron3 z=0 y=-170
+#place copper1 z=0 y=170 x=410
+#place copper1 z=0 y=170 x=-410
+#place copper1 z=0 y=-170 x=410
+#place copper1 z=0 y=-170 x=-410
+# place copper2 z=1175 y=-170 x=0
+# place copper2 z=-1175 y=-170 x=0
+# place copper2 z=1175 y=170 x=0
+# place copper2 z=-1175 y=170 x=0
+
+# place pipe z=0 x=0 y=0  
+#endgroup
+
+
+
+
+
+
+
+
+
+###
+### MBPL + coils
+###
+
+
+box ironblock width=1740.0 height=1160.0 length=2000.0
+box hole width=1120 height=140 length=2010.0
+box coilhole width=300+0.001 height=200+0.001 length=2010.0
+
+boolean op=subtraction tmp ironblock hole x=0 y=0 z=0
+
+boolean op=subtraction tmp2 tmp coilhole x=410 y=170 z=0
+boolean op=subtraction tmp tmp2 coilhole x=-410 y=170 z=0
+boolean op=subtraction tmp2 tmp coilhole x=410 y=-170 z=0
+boolean op=subtraction MBPL tmp2 coilhole x=-410 y=-170 z=0 material=Fe color=1,0,0,1
+
+box MBPLcoil1 height=200 width=300 length=2650 material=Cu color=1,1,0,1
+box MBPLcoil2 height=200 width=520 length=300  material=Cu color=1,1,0,1
+
+box tmpbox height=5000 width=5000 length=5000
+tube tmptube innerRadius=63.5 radius=69.5 length=2996 initialPhi=90 finalPhi=270
+box tmppipe height=6 width=233 length=2996
+boolean op=intersection tmp tmpbox tmppipe y=66.5
+boolean op=union tmp2 tmp tmptube x=-233./2.
+boolean op=union tmp tmp2 tmppipe y=-66.5
+boolean op=union MBPLstraightPipe tmp tmptube x=233./2. rotation=Z180
+
+box tmpbox height=5000 width=5000 length=5000
+tube tmptube innerRadius=66.5 radius=69.5 length=1400 initialPhi=90 finalPhi=270
+box tmppipe height=3 width=67 length=1400
+boolean op=intersection tmp tmpbox tmppipe y=68
+boolean op=union tmp2 tmp tmptube x=-67./2.
+boolean op=union tmp tmp2 tmppipe y=-68
+boolean op=union tmp2 tmp tmptube x=67./2. rotation=Z180
+boolean op=intersection tmp tmpbox tmp2 z=-600*cos(0.06) x=-600*sin(0.06) rotation=Y-0.06*180/3.1415
+boolean op=subtraction tmp3 tmp tmpbox z=2500
+boolean op=union MBPLtiltedPipe tmp3 tmp3 rotation=X180 material=STAINLESS-STEEL color=1,1,1,1
+
+###
+### MBPS + coils
+###
+
+
+box ironblock width=1740.0 height=1160.0 length=1000.0
+box hole width=1120 height=140 length=1010.0
+box coilhole width=300+0.001 height=200+0.001 length=1010.0
+
+boolean op=subtraction tmp ironblock hole x=0 y=0 z=0
+
+boolean op=subtraction tmp2 tmp coilhole x=410 y=170 z=0
+boolean op=subtraction tmp tmp2 coilhole x=-410 y=170 z=0
+boolean op=subtraction tmp2 tmp coilhole x=410 y=-170 z=0
+boolean op=subtraction MBPS tmp2 coilhole x=-410 y=-170 z=0 material=Fe color=1,0,0,1
+
+box MBPScoil1 height=200 width=300 length=1650 material=Cu color=1,1,0,1
+box MBPScoil2 height=200 width=520 length=300  material=Cu color=1,1,0,1
+
+box tmpbox height=5000 width=5000 length=5000
+tube tmptube innerRadius=63.5 radius=69.5 length=1800 initialPhi=90 finalPhi=270
+box tmppipe height=6 width=233 length=1800
+boolean op=intersection tmp tmpbox tmppipe y=66.5
+boolean op=union tmp2 tmp tmptube x=-233./2.
+boolean op=union tmp tmp2 tmppipe y=-66.5
+boolean op=union MBPSbigPipe tmp tmptube x=233./2. rotation=Z180
+
+###
+### QPL + coil
+###
+
+box ironblock width=1040 height=1040 length=2000.0
+box hole width=2*139 height=2*139 length=2010.0
+tube pole radius=sqrt(2)*139-100 length=2000+0.2
+box block2 width=390*2 height=390*2 length=2010.0
+trap coilhole height=196+0.002 upperWidth=1+0.002 lowerWidth=224+0.002 length=2010
+trap coilhole2 height=121.5+0.002 upperWidth=1+0.002 lowerWidth=224+0.002 length=2010
+
+boolean op=subtraction tmp ironblock hole x=0 y=0 z=0
+
+boolean op=union tmp2 tmp pole x=139 y=139 z=0
+boolean op=union tmp tmp2 pole x=-139 y=139 z=0
+boolean op=union tmp2 tmp pole x=139 y=-139 z=0
+boolean op=union tmp tmp2 pole x=-139 y=-139 z=0
+
+boolean op=subtraction tmp2 tmp coilhole x=0 y=-162.6 z=0
+boolean op=subtraction tmp tmp2 coilhole x=0 y=+162.6 z=0 rotation=Z180
+boolean op=subtraction tmp2 tmp coilhole y=0 x=-162.6 z=0 rotation=Z90
+boolean op=subtraction tmp tmp2 coilhole y=0 x=162.6 z=0 rotation=Z270
+
+boolean op=subtraction tmp2 tmp coilhole2 x=0 y=321.35 z=0
+boolean op=subtraction tmp tmp2 coilhole2 x=0 y=-321.35 z=0 rotation=Z180
+boolean op=subtraction tmp2 tmp coilhole2 y=0 x=321.35 z=0 rotation=Z90
+boolean op=subtraction tmp tmp2 coilhole2 y=0 x=-321.35 z=0 rotation=Z270 color=0,0,1 material=Fe
+
+boolean op=subtraction tmp2 tmp block2 x=390*sqrt(2) y=390*sqrt(2) z=0 rotation=Z45 color=0,0,1
+boolean op=subtraction tmp tmp2 block2 x=-390*sqrt(2) y=390*sqrt(2) z=0 rotation=Z45 color=0,0,1
+boolean op=subtraction tmp2 tmp block2 x=-390*sqrt(2) y=-390*sqrt(2) z=0 rotation=Z45 color=0,0,1
+boolean op=subtraction QPL tmp2 block2 x=390*sqrt(2) y=-390*sqrt(2) z=0 rotation=Z45 material=Fe color=0,0,1
+
+
+
+trap coil height=121.5 upperWidth=85 lowerWidth=224 length=2000
+trap coil2 height=121.5 upperWidth=1 lowerWidth=224 length=2000
+boolean op=union QPLcoil coil coil2 x=0 y=-121.5 z=0 rotation=Z180 material=Cu color=0.9,0.9,0.9
+
+tube QPLpipe radius=98.5 innerRadius=96.5 length=2558 material=STAINLESS-STEEL color=1,1,1
+
+###
+### QPS + coil
+###
+
+box ironblock width=1040 height=1040 length=1000.0
+box hole width=2*139 height=2*139 length=1010.0
+tube pole radius=sqrt(2)*139-100 length=1000+0.2
+box block2 width=390*2 height=390*2 length=1010.0
+trap coilhole height=196+0.002 upperWidth=1+0.002 lowerWidth=224+0.002 length=1010
+trap coilhole2 height=121.5+0.002 upperWidth=1+0.002 lowerWidth=224+0.002 length=1010
+
+boolean op=subtraction tmp ironblock hole x=0 y=0 z=0
+
+boolean op=union tmp2 tmp pole x=139 y=139 z=0
+boolean op=union tmp tmp2 pole x=-139 y=139 z=0
+boolean op=union tmp2 tmp pole x=139 y=-139 z=0
+boolean op=union tmp tmp2 pole x=-139 y=-139 z=0
+
+boolean op=subtraction tmp2 tmp coilhole x=0 y=-162.6 z=0
+boolean op=subtraction tmp tmp2 coilhole x=0 y=+162.6 z=0 rotation=Z180
+boolean op=subtraction tmp2 tmp coilhole y=0 x=-162.6 z=0 rotation=Z90
+boolean op=subtraction tmp tmp2 coilhole y=0 x=162.6 z=0 rotation=Z270
+
+boolean op=subtraction tmp2 tmp coilhole2 x=0 y=321.35 z=0
+boolean op=subtraction tmp tmp2 coilhole2 x=0 y=-321.35 z=0 rotation=Z180
+boolean op=subtraction tmp2 tmp coilhole2 y=0 x=321.35 z=0 rotation=Z90
+boolean op=subtraction tmp tmp2 coilhole2 y=0 x=-321.35 z=0 rotation=Z270 color=0,0,1 material=Fe
+
+boolean op=subtraction tmp2 tmp block2 x=390*sqrt(2) y=390*sqrt(2) z=0 rotation=Z45 color=0,0,1
+boolean op=subtraction tmp tmp2 block2 x=-390*sqrt(2) y=390*sqrt(2) z=0 rotation=Z45 color=0,0,1
+boolean op=subtraction tmp2 tmp block2 x=-390*sqrt(2) y=-390*sqrt(2) z=0 rotation=Z45 color=0,0,1
+boolean op=subtraction QPS tmp2 block2 x=390*sqrt(2) y=-390*sqrt(2) z=0 rotation=Z45 material=Fe color=0,0,1,1
+
+trap coil height=121.5 upperWidth=85 lowerWidth=224 length=1000
+trap coil2 height=121.5 upperWidth=1 lowerWidth=224 length=1000
+boolean op=union QPScoil coil coil2 x=0 y=-121.5 z=0 rotation=Z180 material=Cu color=0.9,0.9,0.9,1
+
+tube QPSpipe radius=98.5 innerRadius=96.5 length=1558 material=STAINLESS-STEEL color=1,1,1,1
+
+###
+### CollimatorBox
+###
+
+box tmp width=345 height=345 length=1000
+box tmp2 width=345-24 height=345-24 length=1100
+
+boolean op=subtraction CollimatorBox tmp tmp2 material=STAINLESS-STEEL color=1,1,1,1
+
+
+
+
+
+
+
+
+
+
+
+
+

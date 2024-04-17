@@ -1,0 +1,23 @@
+			
+#########################
+
+include H2cornersReversal.in
+include EHN1.in
+
+#########################
+			
+if $detectorModelVersion==1
+  ntuple GoodParticle category=NTuples detectors=AfterTarget,TOF1,COLL1,BPROF1,BPROF2,BPROF3,TRIG1,BPROF4,TRIG2,NP02front,NP02FieldCage required=TOF1,COLL1,BPROF1,BPROF2,BPROF3,TRIG1,BPROF4,TRIG2,NP02front perTrack=1 
+elseif $detectorModelVersion==2
+  ntuple GoodParticle category=NTuples detectors=AfterTarget,TOF1,COLL1,BPROF1,BPROF2,BPROF3,TRIG1,BPROF4,TRIG2,NP02front,NP02 required=TOF1,COLL1,BPROF1,BPROF2,BPROF3,TRIG1,BPROF4,TRIG2,NP02front perTrack=1 
+endif
+
+#ntuple GoodParticleCherenkov category=NTuples #detectors=AfterTarget,TOF1,COLL1,BPROF1,BPROF2,BPROF3,TRIG1,BPROF4,TRIG2,NP02front,NP02FieldCage,Z660000,Z661000,Z662000,Z663000,Z664000,Z665000,Z666000,Z667000,Z668000,Z669000,Z670000, #required=TOF1,COLL1,BPROF1,BPROF2,BPROF3,TRIG1,BPROF4,TRIG2,NP02front perTrack=1 
+
+param unit=GeV
+param div=_
+param histoFile=H2_v$version$div$momentumVLE$unit$div$jobID.root
+
+#survey file=SurveyH2.txt
+
+#########################

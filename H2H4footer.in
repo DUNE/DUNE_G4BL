@@ -1,0 +1,17 @@
+			
+#########################
+
+include EHN1.in
+
+#########################
+
+ntuple MuonRight category=NTuples detectors=MP1,MP4 required=MP1,MP4 perTrack=1
+ntuple MuonLeft category=NTuples detectors=MP2,MP3 required=MP2,MP3 perTrack=1
+			
+trackcuts killSecondaries=0 
+
+param unit=GeV
+param div=_
+param histoFile=H2H4_v$version$div$momentumVLE$unit$div$jobID.root
+
+#########################
