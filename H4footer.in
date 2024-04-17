@@ -1,0 +1,26 @@
+
+#########################
+
+include H4cornersReversal.in
+include EHN1.in
+
+#########################
+
+if $detectorModelVersion==1
+  ntuple GoodParticle category=NTuples detectors=AfterTarget,TOF1,COLL1,BPROF1,BPROF2,BPROF3,BPROFEXT,TRIG1,BPROF4,TRIG2,NP04front,NP04FieldCage required=TOF1,COLL1,BPROF1,BPROF2,BPROF3,BPROFEXT,TRIG1,BPROF4,TRIG2,NP04front perTrack=1 
+elseif $detectorModelVersion==2
+  ntuple GoodParticle category=NTuples detectors=AfterTarget,TOF1,COLL1,BPROF1,BPROF2,BPROF3,BPROFEXT,TRIG1,BPROF4,TRIG2,NP04front,NP04 required=TOF1,COLL1,BPROF1,BPROF2,BPROF3,BPROFEXT,TRIG1,BPROF4,TRIG2,NP04front perTrack=1 
+endif
+
+# ntuple GoodParticleCherenkov category=NTuples detectors=AfterTarget,TOF1,COLL1,BPROF1,BPROF2,BPROF3,BPROFEXT,TRIG1,BPROF4,TRIG2,NP04front,NP04FieldCage,Z706000,Z707000,Z708000,Z709000,Z710000,Z711000,Z712000,Z713000,Z714000,Z715000,Z716000 required=TOF1,COLL1,BPROF1,BPROF2,BPROF3,BPROFEXT,TRIG1,BPROF4,TRIG2,NP04front perTrack=1 
+
+param unit=GeV
+param div=_
+param histoFile=H4_v$version$div$momentumVLE$unit$div$mbpsDef$div$jobID.root
+
+#survey file=SurveyH4.txt
+
+#########################
+
+#g4ui when=4 "/vis/viewer/set/background 1 1 1"
+#trackcuts killSecondaries=1

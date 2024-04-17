@@ -1,0 +1,27 @@
+
+#######################################################################################
+
+#- General Definitions
+
+param worldMaterial=Vacuum maxStep=100 minStep=0.001 zTolerance=0.1 deltaChord=1e-4 deltaIntersection=1e-4 deltaOneStep=1e-4 epsMax=1e-6 epsMin=1e-9
+physics FTFP_BERT spinTracking=1 gammaToMuPair=1 synchrotronRadiation=1
+#physics Shielding spinTracking=1 gammaToMuPair=1 synchrotronRadiation=1
+trackcuts kineticEnergyCut=10 maxTime=100000000 kill=nu_e,nu_mu,nu_tau,anti_nu_e,anti_nu_mu,anti_nu_tau
+particlecolor proton=1,0,0 pi+=0,1,0 mu+=0,0,1 plus=1,0,1 minus=1,1,0 \
+              neutral=0,1,1 reference=1,1,1
+
+#######################################################################################
+
+include common.in
+
+param -unset beamH2=0.
+param -unset beamH4=1.
+
+param -unset momentumVLE=7
+param -unset pMomentum=80000.0
+param -unset mbpsDef=-55.5
+param -unset detectorModelVersion=2
+
+if $beamH4==1
+  param -unset B3Ty=0
+endif

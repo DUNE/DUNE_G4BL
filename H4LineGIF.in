@@ -1,0 +1,714 @@
+genericbend MDXH fieldWidth=380.0 fieldHeight=100.0 fieldLength=400.0 \
+	ironColor=1,0,0 ironWidth=600.0 ironHeight=600.0 ironLength=400.0 kill=0	
+	
+genericbend MDXV fieldWidth=100.0 fieldHeight=380.0 fieldLength=400.0 \
+	ironColor=1,0,0 ironWidth=600.0 ironHeight=600.0 ironLength=400.0 kill=0
+
+#################Important Parameters for easy access - Varied within each experiment##################
+param -unset Dump1Closed=0  #set 1 for a closed dump, set 0 for an open dump
+param -unset Dump2Closed=0  #set 1 for a closed dump, set 0 for an open dump
+param -unset Dump3Closed=0  #set 1 for a closed dump, set 0 for an open dump
+param -unset Goliathy=0  #Only works to set Goliath Strength for Generic Bend
+
+
+
+
+genericbend GoliathGeneric fieldWidth=3400.0 fieldHeight=1060.0 fieldLength=2500.0 \
+ironColor=1,.39,0 ironWidth=3401.0 ironHeight=2790.0 ironLength=3400.0 kill=0 	
+
+#Additional Iron to make QNL quadrupole rectangular	
+box QNLIronOuter width=600.0 height=884.0 length=2990.0 material=Fe color=0,0.6,0,1 kill=0
+tubs voidQNLIron innerRadius=0 outerRadius=300.0-.001 length=2990.2 material=Vacuum color= kill=0
+boolean op=subtraction QNLIron QNLIronOuter voidQNLIron x=0 y=0 z=0 color=0,0.6,0,1 
+
+
+
+##########################- H4 placement #################################
+
+#param -unset onlyVLE=0
+#if $onlyVLE==0
+
+place MSNH rename=B1 By=$B1y x=+0.56 z=27250.0 rotation=Y-0.08021
+corner z=27250.0 rotation=Y-0.16043 radiusCut=200*1000
+
+place MSNH rename=B2 By=$B2y x=+0.70 z=30800.0 rotation=Y-0.10027
+corner z=30800.0 rotation=Y-0.20054
+
+place QNL rename=Q1 gradient=$Q1 z=34290.0
+place QNL rename=Q2 gradient=$Q2 z=41150.0
+place QNL rename=Q3 gradient=$Q3 z=48740.0
+
+place QNLIron rename=QNLIron1 x=0.0 y=0.0 z=34290.0
+place QNLIron rename=QNLIron2 x=0.0 y=0.0 z=41150.0
+place QNLIron rename=QNLIron3 x=0.0 y=0.0 z=48740.0
+
+place MBNV rename=B3a By=$B3y y=-2.13626 z=53285.0 rotation=Z90,X-0.19584
+corner z=53285.0 rotation=X-0.391674
+
+place MBNV rename=B4a By=$B4y y=-2.13626 z=58945.0 rotation=Z90,X-0.19584
+corner z=58945.0 rotation=X-0.391674
+
+place MBNV rename=B4b By=$B4y y=-2.13626 z=64605.0 rotation=Z90,X-0.19584
+corner z=64605.0 rotation=X-0.391674
+
+place Collimator rename=C1a z=68010.0 x=-95.0
+place Collimator rename=C1b z=68010.0 x=+95.0
+
+place MBNV rename=B3b By=$B3y y=-2.13626 z=71415.0 rotation=Z90,X-0.19584
+corner z=71415.0 rotation=X-0.391674
+
+place MBNV rename=B3c By=$B3y y=-2.13626 z=77075.0 rotation=Z90,X-0.19584
+corner z=77075.0 rotation=X-0.391674
+
+place MBNV rename=B4c By=$B4y y=-2.13626 z=82735.0 rotation=Z90,X-0.19584
+corner z=82735.0 rotation=X-0.391674
+
+place QNL rename=Q4 gradient=$Q4 z=87280.0
+place QNL rename=Q5 gradient=$Q5 z=97498.0
+
+place QNLIron rename=QNLIron4 x=0.0 y=0.0 z=87280.0
+place QNLIron rename=QNLIron5 x=0.0 y=0.0 z=97498.0
+
+place MCAH rename=B5a By=$B5y x=-0.39609 z=116838.0 rotation=Y+0.07262
+corner z=116838.0 rotation=Y+0.14524
+
+place MCAH rename=B5b By=$B5y x=-0.39609 z=120138.0 rotation=Y+0.07262
+corner z=120138.0 rotation=Y+0.14524
+
+place MCAH rename=B5c By=$B5y x=-0.39609 z=123438.0 rotation=Y+0.07262
+corner z=123438.0 rotation=Y+0.14524
+
+place MCAH rename=B5d By=$B5y x=-0.39609 z=126738.0 rotation=Y+0.07262
+corner z=126738.0 rotation=Y+0.14524
+
+place Collimator rename=C2a z=129660.0 x=-95.0
+place Collimator rename=C2b z=129660.0 x=+95.0
+place Collimator rename=C3a z=129660.0 y=-100.0
+place Collimator rename=C3b z=129660.0 y=+100.0
+
+place QNL rename=Q6a gradient=$Q6 z=132010.0
+
+place QNLIron rename=QNLIron6a x=0.0 y=0.0 z=132010.0
+
+place MCAH rename=B5e By=$B5y x=-0.39609 z=137282.0 rotation=Y0.07262
+corner z=137282.0 rotation=Y0.14524
+
+place MCAH rename=B5f By=$B5y x=-0.39609 z=140582.0 rotation=Y0.07262
+corner z=140582.0 rotation=Y0.14524
+
+place MCAH rename=B5g By=$B5y x=-0.39609 z=143882.0 rotation=Y0.07262
+corner z=143882.0 rotation=Y0.14524
+
+place MCAH rename=B5h By=$B5y x=-0.39609 z=147182.0 rotation=Y0.07262
+corner z=147182.0 rotation=Y0.14524
+
+place QNL rename=Q7a gradient=$Q7 z=166522.0
+place QNL rename=Q8a gradient=$Q8 z=176740.0
+
+place QNLIron rename=QNLIron7a x=0.0 y=0.0 z=166522.0
+place QNLIron rename=QNLIron8a x=0.0 y=0.0 z=176740.0
+
+place Collimator rename=C4a z=179030.0 y=-95.0
+place Collimator rename=C4b z=179030.0 y=+95.0
+
+place Collimator rename=C5a z=196010.0 x=-95.0
+place Collimator rename=C5b z=196010.0 x=+95.0
+
+place Collimator rename=C6a z=196010.0 y=-100.0
+place Collimator rename=C6b z=196010.0 y=+100.0
+
+place Collimator rename=C7a z=212990.0 y=-100.0
+place Collimator rename=C7b z=212990.0 y=+100.0
+
+place QNL rename=Q8b gradient=$Q8 z=215280.0
+place QNL rename=Q7b gradient=$Q7 z=225498.0
+ 
+place QNL rename=Q6b gradient=$Q6 z=260010.0
+place QNL rename=Q9 gradient=$Q9 z=294522.0
+place QNL rename=Q10 gradient=$Q10 z=304740.0
+
+place QNLIron rename=QNLIron8b x=0.0 y=0.0 z=215280.0
+place QNLIron rename=QNLIron7b x=0.0 y=0.0 z=225498.0
+place QNLIron rename=QNLIron6b x=0.0 y=0.0 z=260010.0
+place QNLIron rename=QNLIron9 x=0.0 y=0.0 z=294522.0
+place QNLIron rename=QNLIron10 x=0.0 y=0.0 z=304740.0
+
+place MBNV rename=B6a By=$B6y y=+2.14001 z=309285.0 rotation=Z90,X+0.19618
+corner z=309285.0 rotation=X+0.39236
+
+place MBNV rename=B7a By=$B7y y=+2.14001 z=314945.0 rotation=Z90,X+0.19618
+corner z=314945.0 rotation=X+0.39236
+
+place MBNV rename=B7b By=$B7y y=+2.14001 z=320605.0 rotation=Z90,X+0.19618
+corner z=320605.0 rotation=X+0.39236
+
+place MBNV rename=B6b By=$B6y y=+2.14001 z=327415.0 rotation=Z90,X+0.19618
+corner z=327415.0 rotation=X+0.39236
+
+place MBNV rename=B6c By=$B6y y=+2.14001 z=333075.0 rotation=Z90,X+0.19618
+corner z=333075.0 rotation=X+0.39236
+
+place MBNV rename=B7c By=$B7y y=+2.14001 z=338735.0 rotation=Z90,X+0.19618
+corner z=338735.0 rotation=X+0.39236
+
+place QNL rename=Q11 gradient=$Q11 z=343280.0
+place QNL rename=Q12 gradient=$Q12 z=353498.0
+place QNL rename=Q13 gradient=$Q13 z=370180.0
+
+place QNLIron rename=QNLIron11 x=0.0 y=0.0 z=343280.0
+place QNLIron rename=QNLIron12 x=0.0 y=0.0 z=353498.0
+place QNLIron rename=QNLIron13 x=0.0 y=0.0 z=370180.0
+
+place MBNH rename=B8a By=$B8y x=2.25001 z=376655.0 rotation=Y-0.20626
+corner z=376655.0 rotation=Y-0.41253
+
+place MBNH rename=B8b By=$B8y x=2.25001 z=382315.0 rotation=Y-0.20626
+corner z=382315.0 rotation=Y-0.41253
+
+place Collimator rename=C8a z=385720.0 y=-95.0
+place Collimator rename=C8b z=385720.0 y=+95.0
+
+place MBNH rename=B9a By=$B9y x=2.25001 z=393595.0 rotation=Y-0.20626
+corner z=393595.0 rotation=Y-0.41253
+
+place MBNH rename=B9b By=$B9y x=2.25001 z=399475.0 rotation=Y-0.20626
+corner z=399475.0 rotation=Y-0.41253
+
+place QNL rename=Q14 gradient=$Q14 z=422522.0
+place QNL rename=Q15 gradient=$Q15 z=444060.0
+
+place QNLIron rename=QNLIron14 x=0.0 y=0.0 z=422522.0
+place QNLIron rename=QNLIron15 x=0.0 y=0.0 z=444060.0
+
+################Collimators 9 and 10######################
+
+param -unset ApertureOpeningX=90.0  #Physical Values are between 1.0 mm and 90.0 mm
+param -unset ApertureOpeningY=90.0 #Physical Values are between 1.0 mm and 90.0 mm
+
+#Useful Values - set the X and Y offsets to these to hit the center of the Collimator Blocks
+param -unset HitCenter1X=60.0-$ApertureOpeningX/2
+param -unset HitCenter1Y=-62.75-$ApertureOpeningY/2
+param -unset HitCenter2X=62.75+$ApertureOpeningX/2
+param -unset HitCenter2Y=60-$ApertureOpeningY/2 
+param -unset HitCenter3X=-60.0+$ApertureOpeningX/2
+param -unset HitCenter3Y=62.75+$ApertureOpeningY/2
+param -unset HitCenter4X=-62.75-$ApertureOpeningX/2
+param -unset HitCenter4Y=-60+$ApertureOpeningY/2 
+
+#param -unset Xoffset=$HitCenter2X
+#param -unset Yoffset=$HitCenter2Y
+
+param -unset Xoffset=0
+param -unset Yoffset=0
+
+group Collimators9and10 width=1010.0 length=1010.0 height=500.0
+
+box Jaw13a width=120.0 height=113.5 length=1000.0 material=Fe color=0.8,0.8,0.8,1 kill=0
+box Jaw13b width=120.0 height=6.0 length=740.0 material=Fe color=0.8,0.25,0.25,1 kill=0
+box Jaw13cd width=65.2 height=10.0 length=70.0 material=Fe color=0.8,0.25,0.25,1 kill=0
+box Jaw24a width=113.5 height=120.0 length=1000.0 material=Fe color=0.8,0.8,0.8,1 kill=0
+box Jaw24b width=6.0 height=120.0 length=740.0 material=Fe color=0.8,0.25,0.25,1 kill=0
+box Jaw24cd width=10.0 height=65.2 length=70.0 material=Fe color=0.8,0.25,0.25,1 kill=0
+
+place Jaw13a rename=jaw1a  x=-60.0+$ApertureOpeningX/2  y=62.75+$ApertureOpeningY/2  z=0.0
+place Jaw13b rename=jaw1b  x=-60.0+$ApertureOpeningX/2  y=3.0+$ApertureOpeningY/2    z=0.0
+place Jaw13cd rename=jaw1c x=-152.6+$ApertureOpeningX/2 y=5.0+$ApertureOpeningY/2    z=335.0
+place Jaw13cd rename=jaw1d x=-152.6+$ApertureOpeningX/2 y=5.0+$ApertureOpeningY/2    z=-335.0
+place Jaw24a rename=jaw2a  x=-62.75-$ApertureOpeningX/2 y=-60+$ApertureOpeningY/2    z=0.0
+place Jaw24b rename=jaw2b  x=-3.0-$ApertureOpeningX/2   y=-60+$ApertureOpeningY/2    z=0.0
+place Jaw24cd rename=jaw2c x=-5.0-$ApertureOpeningX/2   y=-152.6+$ApertureOpeningY/2 z=335.0
+place Jaw24cd rename=jaw2d x=-5.0-$ApertureOpeningX/2   y=-152.6+$ApertureOpeningY/2 z=-335.0
+place Jaw13a rename=jaw3a  x=60.0-$ApertureOpeningX/2   y=-62.75-$ApertureOpeningY/2 z=0.0
+place Jaw13b rename=jaw3b  x=60.0-$ApertureOpeningX/2   y=-3.0-$ApertureOpeningY/2   z=0.0
+place Jaw13cd rename=jaw3c x=152.6-$ApertureOpeningX/2  y=-5.0-$ApertureOpeningY/2   z=335.0
+place Jaw13cd rename=jaw3d x=152.6-$ApertureOpeningX/2  y=-5.0-$ApertureOpeningY/2   z=-335.0
+place Jaw24a rename=jaw4a  x=62.75+$ApertureOpeningX/2  y=60-$ApertureOpeningY/2     z=0.0
+place Jaw24b rename=jaw4b  x=3.0+$ApertureOpeningX/2    y=60-$ApertureOpeningY/2     z=0.0
+place Jaw24cd rename=jaw4c x=5.0+$ApertureOpeningX/2    y=152.6-$ApertureOpeningY/2  z=335.0
+place Jaw24cd rename=jaw4d x=5.0+$ApertureOpeningX/2    y=152.6-$ApertureOpeningY/2  z=-335.0
+endgroup
+
+place Collimators9and10 x=$Xoffset y=$Yoffset z=452010.0
+
+########################################################
+
+place QNL rename=Q16a gradient=$Q16 z=475092.0
+place QNL rename=Q16b gradient=$Q16 z=478522.0
+
+place QNLIron rename=QNLIron16a x=0.0 y=0.0 z=475092.0
+place QNLIron rename=QNLIron16b x=0.0 y=0.0 z=478522.0
+
+place MDXH rename=Trim1 By=0.0 z=481272.0
+place MDXV rename=Trim2 By=0.0 z=482042.0
+
+###################Define Goliath ##################################################
+
+#Use this to create the iron structure of Goliath for use with the field map
+group PiecesGoliath width=4500.02 length=3600.02 height=2790.02  #Note for future users, dimensions are approximate; some have been inferred
+tubs GoliathTopCoils outerRadius=1646.0 innerRadius=1000.0 length=450.0 material=Al color=0.3,0.38,0.16 kill=0
+tubs GoliathTopYoke outerRadius=1000.0-.002 innerRadius=0 length=450.0 material=Fe color=0.25,0.25,0.25 kill=0
+tubs GoliathBottomCoils outerRadius=1646.0 innerRadius=1000.0 length=300.0 material=Cu color=0.3,0.38,0.16 kill=0
+tubs GoliathBottomYoke outerRadius=1000.0-.002 innerRadius=0 length=300.0 material=Fe color=0.25,0.25,0.25 kill=0
+box VerticalSupport width=1050.0 height=1810.0 length=651.0 material=Fe color=1,0,0 kill=0
+box TopPlate width=4500.0 height=375.0 length=3600.0 material=Fe color=1,0,0 kill=0
+box BottomPlate width=4500.0 height=605.0 length=3600.0 material=Fe color=1,0,0 kill=0
+
+place GoliathTopCoils x=0.0 y=930.0-135.0 z=0 rotation=X-90.0
+place GoliathTopYoke x=0.0 y=930.0-135.0 z=0 rotation=X-90.0
+place GoliathBottomCoils x=0.0 y=-505.0-135.0 z=0 rotation=X-90.0
+place GoliathBottomYoke x=0.0 y=-505.0-135.0 z=0 rotation=X-90.0
+place VerticalSupport rename=VS1 x=1725.0 y=250.0-135.0 z=-1474.5
+place VerticalSupport rename=VS2 x=1725.0 y=250.0-135.0 z=1474.5
+place VerticalSupport rename=VS3 x=-1725.0 y=250.0-135.0 z=-1474.5
+place VerticalSupport rename=VS4 x=-1725.0 y=250.0-135.0 z=1474.5
+place TopPlate x=0 y=1342.5-135.0 z=0
+place BottomPlate x=0 y=-957.5-135.0 z=0
+endgroup
+
+#Use this to import a magnetic field map for Goliath
+#fieldmap GoliathField file=Fieldmapform15TX0no146.map
+#place GoliathField z=492417.0 #Make sure to place with the correct offsets incorporated for the fieldmap
+place PiecesGoliath y=135.0 z=492417.0
+
+#Use this to use default genericbend for Goliath
+#place GoliathGeneric rename=Goliath By=$Goliathy x=0 y=135.0 z=492417.0 
+
+##########3 Downstream Dumps of Goliath#############################################
+
+#Dump Pieces for Dump 1, XTDV 022.520
+#Common to open and closed Dump Configuration
+box DUMPcT width=2420.0 height=800.0 length=3220.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DUMPcLT width=400.0 height=1200.0 length=3220.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DUMPcRT width=400.0 height=1200.0 length=3220.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DUMPcLB width=800.0 height=1600.0 length=3220.0 material=CONCRETE color=0.5,0.8,0.8 kill=0 
+box DUMPcRB width=800.0 height=1600.0 length=3220.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DUMPiT width=1620.0 height=400.0 length=3220.0 material=Fe color=0.8,0.8,0.8 kill=0
+box DUMPiLT width=400.0 height=800.0 length=3220.0 material=Fe color=0.8,0.8,0.8 kill=0
+box DUMPiRT width=400.0 height=800.0 length=3220.0 material=Fe color=0.8,0.8,0.8 kill=0
+
+#Moving pieces
+box DUMPcB width=800.0 height=925.0 length=3220.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DUMPiB width=800.0 height=800.0 length=3220.0 material=Fe color=0.8,0.8,0.8 kill=0
+
+
+######################Place 1st Beam Dump############################
+
+param -unset DUMP1originX=0.0
+param -unset DUMP1originY=0.0
+param -unset DUMP1originZ=519122.0
+
+place DUMPcT rename=DUMPcT1   x=$DUMP1originX        y=$DUMP1originY+1140.0 z=$DUMP1originZ
+place DUMPcLT rename=DUMPcLT1 x=$DUMP1originX+1010.0 y=$DUMP1originY+140.0  z=$DUMP1originZ
+place DUMPcRT rename=DUMPcRT1 x=$DUMP1originX-1010.0 y=$DUMP1originY+140.0  z=$DUMP1originZ
+place DUMPcLB rename=DUMPcLB1 x=$DUMP1originX+810.0  y=$DUMP1originY-1260.0 z=$DUMP1originZ
+place DUMPcRB rename=DUMPcRB  x=$DUMP1originX-810.0  y=$DUMP1originY-1260.0 z=$DUMP1originZ
+place DUMPiT rename=DUMPiT    x=$DUMP1originX        y=$DUMP1originY+540.0  z=$DUMP1originZ
+place DUMPiLT rename=DUMPiLT  x=$DUMP1originX+610.0  y=$DUMP1originY-60.0   z=$DUMP1originZ
+place DUMPiRT rename=DUMPiRT  x=$DUMP1originX-610.0  y=$DUMP1originY-60.0   z=$DUMP1originZ
+
+if $Dump1Closed==1
+	place DUMPcB rename=DUMPcBu1 x=$DUMP1originX y=$DUMP1originY-922.5 z=$DUMP1originZ
+	place DUMPiB rename=DUMPiBu1 x=$DUMP1originX y=$DUMP1originY-60.0  z=$DUMP1originZ
+elseif $Dump1Closed==0
+	place DUMPcB rename=DUMPcBd1 x=$DUMP1originX y=$DUMP1originY-1562.5 z=$DUMP1originZ
+	place DUMPiB rename=DUMPiBd1 x=$DUMP1originX y=$DUMP1originY-700    z=$DUMP1originZ
+endif
+###################Shielding near 1st beam dump, XTDV 022.520#######################
+
+#Floor:
+box FloorUpstreamGIF width=40000.0 height=800.0 length=180000.0 material=CONCRETE color=0.5,0.5,0.5 kill=0
+#place FloorUpstreamGIF x=0.0 y=-2460.0 z=498750.0
+
+#Raised Floor
+box RaisedFloor1 width=8130.0 height=800.0-.05 length=27000.0 material=CONCRETE color=0.5,0.5,0.5 kill=0
+box RaisedFloor2 width=4582.0 height=800.0-.05 length=9181.0 material=CONCRETE color=0.5,0.5,0.5 kill=0
+box RaisedFloor3 width=3782.0 height=800.0-.05 length=6800.0 material=CONCRETE color=0.5,0.5,0.5 kill=0
+box RaisedFloor4 width=982.0 height=800.0 length=31900.0 material=CONCRETE color=0.5,0.5,0.5 kill=0
+place RaisedFloor1 x=-1787.0 y=-1660.0 z=$DUMP1originZ-16428.0
+place RaisedFloor2 x=569.0 y=-1660.0 z=$DUMP1originZ-34518.5
+place RaisedFloor3 x=169.0 y=-1660.0 z=$DUMP1originZ-42509.0
+place RaisedFloor4 x=-31.0 y=-1660.0 z=$DUMP1originZ-61859.0
+
+#Extra Ceiling Near Collimators 9 and 10
+box CeilingA width=4582 height=1600.0 length=31900.0 material=CONCRETE color=0.5,0.8,0.8,0 kill=0
+place CeilingA x=-231.0 y=1940.0 z=$DUMP1originZ-61859.0
+
+#Iron between collimators9/10 and Q16a
+box CQShielding1 width=400.0 height=400.0 length=1600.0 material=Fe color=0.8,0.8,0.8 kill=0
+box CQShielding2 width=800.0 height=400.0 length=1600.0 material=Fe color=0.8,0.8,0.8 kill=0
+box CQShielding3 width=1600.0 height=1100.0 length=1600.0 material=Fe color=0.8,0.8,0.8 kill=0
+box CQShielding4 width=1000.0 height=2400.0 length=1000.0 material=Fe color=0.8,0.8,0.8 kill=0
+box CQShielding5 width=982.0 height=1000.0 length=3200.0 material=CONCRETE color=0.5,0.5,0.5 kill=0
+place CQShielding1 x=295.0 y=40.0 z=$DUMP1originZ-50828.0
+place CQShielding2 x=-495.0 y=40.0 z=$DUMP1originZ-50828.0
+place CQShielding3 x=-155.0 y=-710.0 z=$DUMP1originZ-50828.0
+place CQShielding4 x=-1595.0 y=-60.0 z=$DUMP1originZ-50528.0
+place CQShielding5 x=-31.0 y=-760.0 z=$DUMP1originZ-48428.0
+
+#Furthest Upstream:
+
+box UUUShielding1 width=2380.0 height=4000.0 length=8181.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding2 width=1600.0 height=3200.0 length=12000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding3 width=1600.0 height=3200.0 length=6400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding3b width=180.0 height=3200.0 length=740.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding4 width=1600.0 height=3200.0 length=12800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding5 width=800.0 height=3200.0 length=5600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding6 width=800.0 height=3200.0 length=8800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding7a width=1400.0 height=3200.0 length=2000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding7b width=200.0 height=3200.0 length=2400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding7c width=2400.0 height=3200.0 length=13600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding8 width=1600.0 height=3200.0 length=16300.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding9 width=800.0 height=3200.0 length=8700.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding10 width=800.0 height=3200.0 length=5600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding11 width=1600.0 height=3200.0 length=12100.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding12 width=800.0 height=3200.0 length=24000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding13 width=4000.0 height=3200.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding14 width=800.0 height=3200.0 length=16000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding15 width=1600.0 height=3200.0 length=4800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding16 width=800.0 height=3200.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding17 width=2000.0 height=3200.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding18 width=1600.0 height=3200.0 length=700.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding19 width=1600.0 height=3200.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding20 width=800.0 height=3200.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding21 width=2400.0 height=3200.0 length=17800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding22 width=800.0 height=3200 length=9600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding23 width=1600.0 height=3200.0 length=4200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUUShielding24 width=1600.0 height=3200.0 length=4000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+
+place UUUShielding1 x=$DUMP1originX+3490.0 y=$DUMP1originY-60.0 z=$DUMP1originZ-7018.5
+place UUUShielding2 x=$DUMP1originX+3500.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-17109.0
+place UUUShielding3 x=$DUMP1originX+3840.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-26309.0
+place UUUShielding3b x=$DUMP1originX+2950.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-29139.0
+place UUUShielding4 x=$DUMP1originX+3660.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-35909.0
+place UUUShielding5 x=$DUMP1originX+3260.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-45109.0
+place UUUShielding6 x=$DUMP1originX+2460.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-43509.0
+place UUUShielding7a x=$DUMP1originX+1360.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-46909.0
+place UUUShielding7b x=$DUMP1originX+560.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-47109.0
+place UUUShielding7c x=$DUMP1originX+1860.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-54709.0
+place UUUShielding8 x=$DUMP1originX+1460.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-69659.0
+place UUUShielding9 x=$DUMP1originX+1444.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-82159.0
+place UUUShielding10 x=$DUMP1originX+644.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-80609.0
+place UUUShielding11 x=$DUMP1originX+1844.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-92559.0
+place UUUShielding12 x=$DUMP1originX-6252.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-17928.0
+place UUUShielding13 x=$DUMP1originX-4522.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-30328.0
+place UUUShielding14 x=$DUMP1originX-2122.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-38128.0
+place UUUShielding15 x=$DUMP1originX-3322.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-43728.0
+place UUUShielding16 x=$DUMP1originX-3722.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-46928.0
+place UUUShielding17 x=$DUMP1originX-1522.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-48428.0
+place UUUShielding18 x=$DUMP1originX-3322.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-49678.0
+place UUUShielding19 x=$DUMP1originX-2922.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-50828.0
+place UUUShielding20 x=$DUMP1originX-922.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-52428.0
+place UUUShielding21 x=$DUMP1originX-2522.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-60528.0
+place UUUShielding22 x=$DUMP1originX-4122.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-59538.0
+place UUUShielding23 x=$DUMP1originX-2922.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-71528.0
+place UUUShielding24 x=$DUMP1originX-2672.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-75628.0
+#place UUUShielding17 x=$DUMP1originX-1522.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-48428.0
+#place UUUShielding18 x=$DUMP1originX-3322.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-49678.0
+#place UUUShielding19 x=$DUMP1originX-2922.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-50828.0
+#place UUUShielding20 x=$DUMP1originX-922.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-52428.0
+#place UUUShielding21 x=$DUMP1originX-2522.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-60528.0
+#place UUUShielding22 x=$DUMP1originX-4122.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-59538.0
+#place UUUShielding23 x=$DUMP1originX-2922.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-71528.0
+#place UUUShielding24 x=$DUMP1originX-2672.0 y=$DUMP1originY+340.0 z=$DUMP1originZ-75628.0
+
+#Iron section with associated Shielding:
+box UUShieldingcT width=4600.0 height=800.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUShieldingcSide width=1200.0 height=800.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UUShieldingiSide width=800.0 height=800.0 length=1600.0 material=Fe color=0.8,0.8,0.8 kill=0
+box UUShieldingcSideB width=2000.0 height=800.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+
+place UUShieldingcT x=$DUMP1originX y=$DUMP1originY+740.0 z=$DUMP1originZ-5632.0
+place UUShieldingcSide rename=UUShieldingcL x=$DUMP1originX+1700.0 y=$DUMP1originY-60.0 z=$DUMP1originZ-5632.0
+place UUShieldingcSide rename=UUShieldingcR x=$DUMP1originX-1700.0 y=$DUMP1originY-60.0 z=$DUMP1originZ-5632.0
+place UUShieldingiSide rename=UUShieldingiL x=$DUMP1originX+700.0 y=$DUMP1originY-60.0 z=$DUMP1originZ-4832.0
+place UUShieldingiSide rename=UUShieldingiR x=$DUMP1originX-700.0 y=$DUMP1originY-60.0 z=$DUMP1originZ-4832.0
+place UUShieldingcSideB rename=UUShieldingcLB x=$DUMP1originX+1300.0 y=$DUMP1originY-860.0 z=$DUMP1originZ-5632.0
+place UUShieldingcSideB rename=UUShieldingcRB x=$DUMP1originX-1300.0 y=$DUMP1originY-860.0 z=$DUMP1originZ-5632.0
+
+#Close to and slightly downstream of 1st beam dump:
+box UShielding1 width=800.0 height=3200.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding2 width=800.0 height=4000.0 length=6400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding3 width=800.0 height=2400.0 length=3950.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding4 width=800.0 height=4000.0 length=2400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding5 width=800.0 height=1600.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding6 width=800.0 height=2400.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding7 width=800.0 height=6400.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding8 width=3200.0 height=3200.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding9 width=800.0 height=6400.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding10 width=800.0 height=3200.0 length=13600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding11 width=800.0 height=2400.0 length=4800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding12 width=800.0 height=2400.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding13 width=800.0 height=4000.0 length=2400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding14 width=800.0 height=5600.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding15 width=400.0 height=3200.0 length=1800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding16 width=400.0 height=3200.0 length=1000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding17 width=800.0 height=3200.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding18 width=800.0 height=4000.0 length=4000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding19 width=2400.0 height=6400.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding20 width=2400.0 height=4000.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding21 width=800.0 height=3200.0 length=2400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding22 width=800.0 height=4000.0 length=6400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box UShielding23 width=800.0 height=4000.0 length=5600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+
+place UShielding1 x=$DUMP1originX+1859.0 y=$DUMP1originY-460.0 z=$DUMP1originZ+12869.0
+place UShielding2 x=$DUMP1originX+2659.0 y=$DUMP1originY-60.0 z=$DUMP1originZ+9169.0
+place UShielding3 x=$DUMP1originX+2659.0 y=$DUMP1originY+3140.0 z=$DUMP1originZ+9744.0
+place UShielding4 x=$DUMP1originX+1859.0 y=$DUMP1originY-60.0 z=$DUMP1originZ+7169.0
+place UShielding5 x=$DUMP1originX+1859.0 y=$DUMP1originY-1260.0 z=$DUMP1originZ+8769.0
+place UShielding6 x=$DUMP1originX+3011.0 y=$DUMP1originY-860.0 z=$DUMP1originZ+4732.0
+place UShielding7 x=$DUMP1originX+1878.0 y=$DUMP1originY+1140.0 z=$DUMP1originZ+3272.0
+place UShielding8 x=$DUMP1originX-122.0 y=$DUMP1originY+2740.0 z=$DUMP1originZ+3272.0
+place UShielding9 x=$DUMP1originX-2122.0 y=$DUMP1originY+1140.0 z=$DUMP1originZ+3272.0
+place UShielding10 x=$DUMP1originX-1926.0 y=$DUMP1originY-460.0 z=$DUMP1originZ+12732.0
+place UShielding11 x=$DUMP1originX-1926.0 y=$DUMP1originY+2340.0 z=$DUMP1originZ+8782.0
+place UShielding12 x=$DUMP1originX-1445.0 y=$DUMP1originY-860.0 z=$DUMP1originZ+4724.0
+place UShielding13 x=$DUMP1originX+1878.0 y=$DUMP1originY-60.0 z=$DUMP1originZ+1672.0
+place UShielding14 x=$DUMP1originX+1878.0 y=$DUMP1originY+740.0 z=$DUMP1originZ-328.0
+place UShielding15 x=$DUMP1originX+2078.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-2028.0
+place UShielding16 x=$DUMP1originX+2478.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-2428.0
+place UShielding17 x=$DUMP1originX-1322.0 y=$DUMP1originY-460.0 z=$DUMP1originZ+2472.0
+place UShielding18 x=$DUMP1originX-2122.0 y=$DUMP1originY-60.0 z=$DUMP1originZ+872.0
+place UShielding19 x=$DUMP1originX-3052.0 y=$DUMP1originY+1140.0 z=$DUMP1originZ-1528.0
+place UShielding20 x=$DUMP1originX-5452.0 y=$DUMP1originY-60.0 z=$DUMP1originZ-1528.0
+place UShielding21 x=$DUMP1originX-6252.0 y=$DUMP1originY-460.0 z=$DUMP1originZ-3128.0
+place UShielding22 x=$DUMP1originX+3878.0 y=$DUMP1originY-60.0 z=$DUMP1originZ+272.0
+place UShielding23 x=$DUMP1originX+3078.0 y=$DUMP1originY-60.0 z=$DUMP1originZ-128.0
+
+#####################Pieces for 2nd and 3rd Beam Dumps##############
+
+#Outer Layer
+box OuterLayercT width=1600.0 height=800.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box OuterLayercSide width=400.0 height=800.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box OuterLayercB width=1600.0 height=1600.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box OuterLayeriTB width=800.0 height=200.0 length=800.0 material=Fe color=0.8,0.8,0.8 kill=0
+box OuterLayeriSide width=200.0 height=400.0 length=800.0 material=Fe color=0.8,0.8,0.8 kill=0
+
+#Dump Layer
+box DumpLayercT width=1620.0 height=800.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DumpLayercTSide width=800.0 height=2400.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DumpLayercBSide width=800.0 height=1600.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DumpLayercBSideSide width=800 height=1600.0 length=2400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box DumpLayercTTR width=800.0 height=800.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0 #Only used in Dump2
+box DumpLayeriT width=1620.0 height=400.0 length=3200.0 material=Fe color=0.8,0.8,0.8 kill=0
+box DumpLayeriSide width=400.0 height=800.0 length=3200.0 material=Fe color=0.8,0.8,0.8 kill=0
+
+#Moving Pieces in Dump Layer
+box DumpLayeriB width=800.0 height=800.0 length=3200.0 material=Fe color=0.8,0.8,0.8 kill=0
+box DumpLayercB width=800.0 height=345.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+
+#####################Place 2nd Beam Dump, XTDV 022.610#########################
+
+param -unset DUMP2originX=0.0
+param -unset DUMP2originY=0.0
+param -unset DUMP2originZ=610495.0
+
+place OuterLayercT  rename=OuterLayer2cT x=$DUMP2originX y=$DUMP2originY+800.0 z=$DUMP2originZ-2000
+place OuterLayercSide rename=OuterLayer2cL x=$DUMP2originX+600.0 y=$DUMP2originY z=$DUMP2originZ-2000.0
+place OuterLayercSide rename=OuterLayer2cR x=$DUMP2originX-600.0 y=$DUMP2originY z=$DUMP2originZ-2000.0
+place OuterLayercB rename=OuterLayer2cB x=$DUMP2originX y=$DUMP2originY-1200 z=$DUMP2originZ-2000.0
+place OuterLayeriTB rename=OuterLayer2iT x=$DUMP2originX y=$DUMP2originY+300.0 z=$DUMP2originZ-2000.0
+place OuterLayeriSide rename=OuterLayer2iL x=$DUMP2originX+300.0 y=$DUMP2originY z=$DUMP2originZ-2000.0
+place OuterLayeriSide rename=OuterLayer2iR x=$DUMP2originX-300.0 y=$DUMP2originY z=$DUMP2originZ-2000.0
+place OuterLayeriTB rename=OuterLayer2iB x=$DUMP2originX y=$DUMP2originY-300.0 z=$DUMP2originZ-2000.0
+
+place DumpLayercT rename=DumpLayer2cT x=$DUMP2originX y=$DUMP2originY+1200.0 z=$DUMP2originZ
+place DumpLayercTSide rename=DumpLayer2cTL x=$DUMP2originX+1210.0 y=$DUMP2originY+800.0 z=$DUMP2originZ
+place DumpLayercTSide rename=DumpLayer2cTR x=$DUMP2originX-1210.0 y=$DUMP2originY+800.0 z=$DUMP2originZ
+place DumpLayercBSide rename=DumpLayer2cBL x=$DUMP2originX+810.0 y=$DUMP2originY-1200.0 z=$DUMP2originZ
+place DumpLayercBSide rename=DumpLayer2cBR x=$DUMP2originX-810.0 y=$DUMP2originY-1200.0 z=$DUMP2originZ
+place DumpLayercBSideSide rename=DumpLayer2cBLL x=$DUMP2originX+1610.0 y=$DUMP2originY-1200.0 z=$DUMP2originZ
+place DumpLayercBSideSide rename=DumpLayer2cBRR x=$DUMP2originX-1610.0 y=$DUMP2originY-1200.0 z=$DUMP2originZ
+place DumpLayercTTR x=$DUMP2originX-1210.0 y=$DUMP2originY+2400.0 z=$DUMP2originZ+800.0
+place DumpLayeriT rename=DumpLayer2iT x=$DUMP2originX y=$DUMP2originY+600.0 z=$DUMP2originZ
+place DumpLayeriSide rename=DumpLayer2iL x=$DUMP2originX+610.0 y=$DUMP2originY z=$DUMP2originZ
+place DumpLayeriSide rename=DumpLayer2iR x=$DUMP2originX-610.0 y=$DUMP2originY z=$DUMP2originZ
+
+if $Dump2Closed==1
+place DumpLayeriB rename=DumpLayer2iB x=$DUMP2originX y=$DUMP2originY z=$DUMP2originZ
+place DumpLayercB rename=DumpLayer2cB x=$DUMP2originX y=$DUMP2originY-572.5 z=$DUMP2originZ
+elseif $Dump2Closed==0
+place DumpLayeriB rename=DumpLayer2iB x=$DUMP2originX y=$DUMP2originY-615.0 z=$DUMP2originZ
+place DumpLayercB rename=DumpLayer2cB x=$DUMP2originX y=$DUMP2originY-1187.5 z=$DUMP2originZ
+endif
+
+#####################Place 3rd Beam Dump, XTDV 022.628############################
+
+param -unset DUMP3originX=0.0
+param -unset DUMP3originY=0.0
+param -unset DUMP3originZ=628895.0
+
+place OuterLayercT  rename=OuterLayer3cT  x=$DUMP3originX y=$DUMP3originY+800.0 z=$DUMP3originZ+2000
+place OuterLayercSide rename=OuterLayer3cL x=$DUMP3originX+600.0 y=$DUMP3originY z=$DUMP3originZ+2000.0
+place OuterLayercSide rename=OuterLayer3cR x=$DUMP3originX-600.0 y=$DUMP3originY z=$DUMP3originZ+2000.0
+place OuterLayercB rename=OuterLayer3cB x=$DUMP3originX y=$DUMP3originY-1200 z=$DUMP3originZ+2000.0
+place OuterLayeriTB rename=OuterLayer3iT x=$DUMP3originX y=$DUMP3originY+300.0 z=$DUMP3originZ+2000.0
+place OuterLayeriSide rename=OuterLayer3iL x=$DUMP3originX+300.0 y=$DUMP3originY z=$DUMP3originZ+2000.0
+place OuterLayeriSide rename=OuterLayer3iR x=$DUMP3originX-300.0 y=$DUMP3originY z=$DUMP3originZ+2000.0
+place OuterLayeriTB rename=OuterLayer3iB x=$DUMP3originX y=$DUMP3originY-300.0 z=$DUMP3originZ+2000.0
+
+place DumpLayercT rename=DumpLayer3cT x=$DUMP3originX y=$DUMP3originY+1200.0 z=$DUMP3originZ
+place DumpLayercTSide rename=DumpLayer3cTL x=$DUMP3originX+1210.0 y=$DUMP3originY+800.0 z=$DUMP3originZ
+place DumpLayercTSide rename=DumpLayer3cTR x=$DUMP3originX-1210.0 y=$DUMP3originY+800.0 z=$DUMP3originZ
+place DumpLayercBSide rename=DumpLayer3cBL x=$DUMP3originX+810.0 y=$DUMP3originY-1200.0 z=$DUMP3originZ
+place DumpLayercBSide rename=DumpLayer3cBR x=$DUMP3originX-810.0 y=$DUMP3originY-1200.0 z=$DUMP3originZ
+place DumpLayercBSideSide rename=DumpLayer3cBLL x=$DUMP3originX+1610.0 y=$DUMP3originY-1200.0 z=$DUMP3originZ
+place DumpLayercBSideSide rename=DumpLayer3cBRR x=$DUMP3originX-1610.0 y=$DUMP3originY-1200.0 z=$DUMP3originZ
+place DumpLayeriT rename=DumpLayer3iT x=$DUMP3originX y=$DUMP3originY+600.0 z=$DUMP3originZ
+place DumpLayeriSide rename=DumpLayer3iL x=$DUMP3originX+610.0 y=$DUMP3originY z=$DUMP3originZ
+place DumpLayeriSide rename=DumpLayer3iR x=$DUMP3originX-610.0 y=$DUMP3originY z=$DUMP3originZ
+
+if $Dump3Closed==1
+place DumpLayeriB rename=DumpLayer3iB x=$DUMP3originX y=$DUMP3originY z=$DUMP3originZ
+place DumpLayercB rename=DumpLayer3cB x=$DUMP3originX y=$DUMP3originY-572.5 z=$DUMP3originZ
+elseif $Dump3Closed==0
+place DumpLayeriB rename=DumpLayer3iB x=$DUMP3originX y=$DUMP3originY-615.0 z=$DUMP3originZ
+place DumpLayercB rename=DumpLayer3cB x=$DUMP3originX y=$DUMP3originY-1187.5 z=$DUMP3originZ
+endif
+
+####################Shielding upstream of GIF#######################
+
+param -unset GIForiginX=0.0
+param -unset GIForiginY=0.0 #Beam is approximately 2060mm above floor in this model
+param -unset GIForiginZ=608075.0
+param -unset CeilingVisible=0
+
+#Intermediate Sections of Shielding
+box IShielding1 width=2400.0 height=800.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding2 width=800.0 height=4000.0 length=1700.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding3 width=4000.0 height=800.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding4 width=800.0 height=3600.0 length=3100.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding5 width=800.0 height=3600.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding6 width=800.0 height=5600.0 length=4800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding7 width=800.0 height=2400.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding8 width=2400.0 height=800.0 length=4800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box IShielding9 width=800.0 height=1600.0 length=3200.0 material=Fe color=0.8,0.8,0.8 kill=0
+box IShielding10 width=800.0 height=1600.0 length=3200.0 material=Fe color=0.8,0.8,0.8 kill=0
+box IShielding11 width=2400.0 height=1600.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+
+place IShielding1 x=$GIForiginX-175 y=$GIForiginY+2340.0 z=$GIForiginZ-31450.0
+place IShielding2 x=$GIForiginX-1670 y=$GIForiginY-60.0 z=$GIForiginZ-31660.0
+place IShielding3 x=$GIForiginX-390.0 y=$GIForiginY+1940.0 z=$GIForiginZ-33350.0
+place IShielding4 x=$GIForiginX-1670.0 y=$GIForiginY-260.0 z=$GIForiginZ-34060.0
+place IShielding5 x=$GIForiginX+1745.0 y=$GIForiginY-260.0 z=$GIForiginZ-33350.0
+place IShielding6 x=$GIForiginX+1745.0 y=$GIForiginY+740.0 z=$GIForiginZ-36550.0
+place IShielding7 x=$GIForiginX+1745.0 y=$GIForiginY-860.0 z=$GIForiginZ-39750.0
+place IShielding8 x=$GIForiginX+145.0 y=$GIForiginY-1660.0 z=$GIForiginZ-38050.0
+place IShielding9 x=$GIForiginX+575.0 y=$GIForiginY-460.0 z=$GIForiginZ-38275.0
+place IShielding10 x=$GIForiginX-575.0 y=$GIForiginY-460.0 z=$GIForiginZ-38275.0
+place IShielding11 x=$GIForiginX+145.0 y=$GIForiginY+1140.0 z=$GIForiginZ-37285.0
+
+#Shielding just upstream of GIF
+box Shielding1 width=800.0 height=2400.0-2.0 length=6400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding2 width=800.0 height=1600.0-2.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding3 width=800.0 height=1600.0-2.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding4 width=800.0 height=3200.0 length=16800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding5 width=2000.0 height=4000.0-2.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding6 width=800.0 height=4000.0 length=28800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding7 width=2400.0 height=4000.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding8 width=800.0 height=3200.0 length=15980.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding9 width=3200.0 height=3200.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding10 width=800.0 height=3200.0 length=26400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding11 width=800.0 height=3200.0 length=2400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Shielding12 width=400.0 height=1600.0 length=1600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+
+place Shielding1 x=$GIForiginX+2560.0 y=$GIForiginY-860.0+1.0 z=$GIForiginZ+820.0
+place Shielding2 x=$GIForiginX+1760.0 y=$GIForiginY-1260.0+1.0 z=$GIForiginZ-2380.0
+place Shielding3 x=$GIForiginX+2560.0 y=$GIForiginY-1260.0+1.0 z=$GIForiginZ-2780.0
+place Shielding4 x=$GIForiginX-1610.0 y=$GIForiginY-460.0 z=$GIForiginZ-7600.0
+place Shielding5 x=$GIForiginX+2690.0 y=$GIForiginY-60.0+1.0 z=$GIForiginZ-4050.0
+place Shielding6 x=$GIForiginX+1290.0 y=$GIForiginY-60.0 z=$GIForiginZ-18050.0
+place Shielding7 x=$GIForiginX+2890.0 y=$GIForiginY-60.0 z=$GIForiginZ-32050.0
+place Shielding8 x=$GIForiginX+4346.0 y=$GIForiginY-460.0 z=$GIForiginZ-40440.0
+place Shielding9 x=$GIForiginX+2346.0 y=$GIForiginY-460.0 z=$GIForiginZ-48490.0
+place Shielding10 x=$GIForiginX+935.0 y=$GIForiginY-460.0 z=$GIForiginZ-62090.0
+place Shielding11 x=$GIForiginX-810.0 y=$GIForiginY-460.0 z=$GIForiginZ-10000.0
+place Shielding12 x=$GIForiginX+690.0 y=$GIForiginY-1260.0 z=$GIForiginZ-14370.0
+
+#######################Virtual Detectors############################
+#detector OutsideGIF width=1620.0 height=4000.0 length=1.0 material=Vacuum coordinates=centerline color=1,1,1,0 kill=0
+#detector FrontHallGIF width=4800.0 height=4000.0 length=8000.0 material=Vacuum coordinates=centerline color=1,1,1,0 kill=0
+#detector BackHallGIF width=12000.0 height=4000.0 length=4000.0 material=Vacuum coordinates=centerline color=1,1,1,0 kill=0
+
+#place OutsideGIF x=$GIForiginX y=$GIForiginY z=$GIForiginZ+19.5 
+#place FrontHallGIF x=$GIForiginX+1590.0 y=$GIForiginY z=$GIForiginZ+9620.0
+#place BackHallGIF x=$GIForiginX+1190.0 y=$GIForiginY z=$GIForiginZ+15620.0
+
+#######################GIF Hall#####################################
+
+box Wall1 width=4000.0 height=3200.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall2 width=1600.0 height=4800.0 length=4000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall3 width=1600.0 height=5600.0 length=6000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall4 width=12000.0-0.2 height=5600.0-4.0-0.2 length=1600.0-0.2 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall5 width=1600.0 height=5600.0-6.0 length=8000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall6 width=1600.0 height=4800.0-4.0 length=9600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall7 width=4800.0-0.2 height=4800.0-2.0-0.2 length=1600.0-0.2 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall8 width=800.0 height=4800.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall9 width=800.0 height=4800.0 length=7600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall10 width=800.0 height=4800.0 length=3600.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall11 width=3200.0 height=4800.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall12 width=3600.0 height=3200.0 length=800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall13 width=1600.0 height=1600.0 length=3200.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+box Wall14 width=800.0 height=3200.0 length=2400.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+
+#Create a hole for the beam:
+#Adjacent to 2nd Beam Dump:
+box voidWall7vo width=800.0 height=800.0 length=1600.0 material=Vacuum color= kill=0
+boolean op=subtraction Wall7withHole Wall7 voidWall7vo x=-1590.0 y=-341.0 z=0.0 color=.5,0.8,0.8,1 
+box voidWall7iTB width=800.0-.2 height=200.0-.2 length=800.0-.2 material=Fe color=0.8,0.8,0.8 kill=0
+box voidWall7iSide width=200.0-.2 height=400.0-.2 length=800.0-.2 material=Fe color=0.8,0.8,0.8 kill=0
+place voidWall7iTB rename=voidWall7iT x=$GIForiginX y=$GIForiginY+300.0 z=$GIForiginZ+400.0+4820.0 
+place voidWall7iSide rename=voidWall7iL x=$GIForiginX+300.0 y=$GIForiginY z=$GIForiginZ+400.0+4820.0 
+place voidWall7iSide rename=voidWall7iR x=$GIForiginX-300.0 y=$GIForiginY z=$GIForiginZ+400.0+4820.0 
+place voidWall7iTB rename=voidWall7iB x=$GIForiginX y=$GIForiginY-300.0 z=$GIForiginZ+400.0+4820.0 
+
+#Adjacent to 3rd Beam Dump:
+box voidWall4vo width=800.0 height=800.0 length=1600.0 material=Vacuum color= kill=0
+boolean op=subtraction Wall4withHole Wall4 voidWall4vo x=-1190.0 y=-742.0 z=0 color=.5,0.8,0.8,1 
+box voidWall7iTB width=800.0-.2 height=200.0-.2 length=800.0-.2 material=Fe color=0.8,0.8,0.8 kill=0
+box voidWall7iSide width=200.0-.2 height=400.0-.2 length=800.0-.2 material=Fe color=0.8,0.8,0.8 kill=0
+place voidWall7iTB rename=voidWall7iT x=$GIForiginX y=$GIForiginY+300.0 z=$GIForiginZ-400.0+18420.0 
+place voidWall7iSide rename=voidWall7iL x=$GIForiginX+300.0 y=$GIForiginY z=$GIForiginZ-400.0+18420.0 
+place voidWall7iSide rename=voidWall7iR x=$GIForiginX-300.0 y=$GIForiginY z=$GIForiginZ-400.0+18420.0 
+place voidWall7iTB rename=voidWall7iB x=$GIForiginX y=$GIForiginY-300.0 z=$GIForiginZ-400.0+18420.0 
+
+if $CeilingVisible==1
+	box Ceiling1 width=14120.0 height=600.0 length=6000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+	box Ceiling2 width=3800.0 height=800.0 length=2280.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+	box Ceiling3 width=4800.0 height=1000.0 length=4800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+	box Ceiling4 width=6000.0 height=600.0 length=8060.0+20.0+800.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+	box Ceiling5 width=2000.0 height=800.0 length=4000.0 material=CONCRETE color=0.5,0.8,0.8 kill=0
+elseif $CeilingVisible==0
+	box Ceiling1 width=14120.0 height=600.0 length=6000.0 material=CONCRETE color=  kill=0
+	box Ceiling2 width=3800.0 height=800.0 length=2280.0 material=CONCRETE color=  kill=0
+	box Ceiling3 width=4800.0 height=1000.0 length=4800.0 material=CONCRETE color=  kill=0
+	box Ceiling4 width=6000.0 height=600.0 length=8060.0+20.0+800.0 material=CONCRETE color=  kill=0
+	box Ceiling5 width=2000.0 height=800.0 length=4000.0 material=CONCRETE color= kill=0
+endif
+
+place Wall1 x=$GIForiginX-8410.0 y=$GIForiginY-460.0 z=$GIForiginZ+8820.0
+place Wall2 x=$GIForiginX-5610.0 y=$GIForiginY+340.0 z=$GIForiginZ+11220.0
+place Wall3 x=$GIForiginX-5610.0 y=$GIForiginY+740.0 z=$GIForiginZ+16220.0
+place Wall4withHole x=$GIForiginX+1190.0 y=$GIForiginY+742.0 z=$GIForiginZ+18420.0
+place Wall5 x=$GIForiginX+7990.0 y=$GIForiginY+743.0 z=$GIForiginZ+15200.0
+place Wall6 x=$GIForiginX+4790.0 y=$GIForiginY+342.0 z=$GIForiginZ+8820.0
+place Wall7withHole x=$GIForiginX+1590.0 y=$GIForiginY+341.0 z=$GIForiginZ+4820.0
+place Wall8 x=$GIForiginX-1210.0 y=$GIForiginY+340.0 z=$GIForiginZ+5620.0
+place Wall9 x=$GIForiginX-2010.0 y=$GIForiginY+340.0 z=$GIForiginZ+9820.0
+place Wall10 x=$GIForiginX-1210.0 y=$GIForiginY+340.0 z=$GIForiginZ+11820.0
+place Wall11 x=$GIForiginX-3810.0 y=$GIForiginY+760.0 z=$GIForiginZ+5620.0
+place Wall12 x=$GIForiginX-6810.0 y=$GIForiginY-460.0 z=$GIForiginZ+6420.0
+place Wall13 x=$GIForiginX-5610.0 y=$GIForiginY+1940.0 z=$GIForiginZ+7620.0
+place Wall14 x=$GIForiginX-10010.0 y=$GIForiginY-460.0 z=$GIForiginZ+7220.0
+place Ceiling1 x=$GIForiginX+1450.0 y=$GIForiginY+3840.0 z=$GIForiginZ+15800.0
+place Ceiling2 x=$GIForiginX-3310.0 y=$GIForiginY+3140.0 z=$GIForiginZ+12010.0
+place Ceiling3 x=$GIForiginX-3810.0 y=$GIForiginY+3240.0 z=$GIForiginZ+8420.0
+place Ceiling4 x=$GIForiginX+1590.0 y=$GIForiginY+3040.0 z=$GIForiginZ+8780.0+400.0
+place Ceiling5 x=$GIForiginX+6190.0 y=$GIForiginY+3140.0 z=$GIForiginZ+11230.0
+
+############################################################
+
+place MBPH rename=B17a By=$B17ax x=-1.7000262 z=633895.0 rotation=Y-0.389611301
+corner z=633895.0 rotation=Y-0.779222601
+
+place MBPH rename=B17b By=$B17bx x=-1.7000262 z=652629.0 rotation=Y-0.389611301
+corner z=652629.0 rotation=Y-0.779222601

@@ -1,0 +1,577 @@
+######### TARGET SHIELDING IMPLEMENTATION ###################################
+### ADJUSTED TO POSITION OF H2 VLE TARGET
+### BASED ON H2 CENTERLINE COORDINATES
+
+corner z=3150.0 rotation=Y+0.320856370 radiusCut=200*1000
+corner z=7350.0 rotation=Y+0.320856370
+corner z=27250.0 rotation=Y+0.160428183
+corner z=53265.0 rotation=X-0.391673949
+corner z=58925.0 rotation=X-0.391673949
+corner z=64585.0 rotation=X-0.391673949
+corner z=71395.0 rotation=X-0.391673949
+corner z=77055.0 rotation=X-0.391673949
+corner z=82715.0 rotation=X-0.391673949
+corner z=319005 rotation=X+0.392361498
+corner z=324665 rotation=X+0.392361498
+corner z=330325 rotation=X+0.392361498
+corner z=337135 rotation=X+0.392361498
+corner z=342795 rotation=X+0.392361498
+corner z=348455 rotation=X+0.392361498
+corner z=405480.0 rotation=Y+0.343774677
+
+param shieldRot=2.295
+corner z=630660.0 rotation=Y-$shieldRot
+
+### FIX POINTS
+
+param fp3x=-2093.5 fp3y=-2461.4 fp3z=630660-1600
+param fp2x=$fp3x+3700 fp2y=$fp3y fp2z=$fp3z+1630+10750+6350
+
+### Adding artificial shift of 70mm in x direction of shielding and detector
+param fp1x=$fp2x+1742-70 fp1y=$fp2y fp1z=$fp2z+16262+450-4000
+
+param fp4x=$fp1x-18375+400+5600/2-200 fp4y=$fp1y-3670+7340/2+250-400+60 fp4z=$fp1z+18120.5-19015/2+10400+1600+9600/2
+
+### EHN1 HALL
+
+material molasses density=2.4 Si,0.294 O,0.5396 Ca,0.1224 H,0.0073 C,0.0367
+
+box TUNNELFLOOR width=40000 height=800 length=300000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TUNNELSoil width=40000 height=20000-0.001 length=300000 material=molasses color=0.5,0.5,0.3,0.2 kill=0 
+box EHN1Soil width=40000 height=20000-0.001 length=80000+250000-1000 material=molasses color=0.5,0.5,0.3,0.2 kill=0
+boolean op=union Soil EHN1Soil TUNNELSoil x=0 y=-400-150100*sin(2.35/180*$PI)-10400*cos(2.35/180*$PI)-(-800-10000) z=-31387-125000-165000-150100*cos(2.35/180*$PI)+10400*sin(2.35/180*$PI)-(-31387-500-125000) rotation=X+2.35 material=molasses color=0.5,0.5,0.3,0.2 kill=0
+
+box EHN1FLOOR width=20000+20000 height=800-5-0.001 length=80000+250000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box SINK width=800.0 height=300.0+2 length=2800.0+2 material=Vacuum color=0.5,0.8,0.8,1 kill=0
+boolean op=subtraction EHN1FLOORb EHN1FLOOR SINK x=-270+10000 y=250 z=40000+125000-1399 color=0.5,0.8,0.8,1
+
+box PITFLOOR width=19600.0 height=800.0 length=19015.0 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box PITWALL width=19600.0 height=6540 length=800.0 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box PITWALL2 width=800.0 height=7340.0 length=19015.0-0.001 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box PIT2FLOOR width=16100.0 height=800.0 length=40800.0 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box PIT2WALL width=800.0 height=8980.0 length=40800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box PIT2WALL2 width=16100.0 height=8980.0 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box PIT2WALL3 width=800.0 height=8980.0 length=33500 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box PIT2WALL4 width=6000.0 height=8980.0 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+place TUNNELFLOOR x=$fp1x-5000-10000 y=$fp1y-400-150100*sin(2.35/180*$PI) z=$fp1z-31387-125000-165000-150100*cos(2.35/180*$PI) rotation=X-2.35
+
+expandworld 0,$fp1y-400-150100*sin(2.35/180*$PI)-2*10400*cos(2.35/180*$PI),0
+place Soil x=$fp1x-5000-10000 y=$fp1y-800-10000 z=$fp1z-31387-500-125000
+
+place EHN1FLOORb x=$fp1x-5000-10000 y=$fp1y-400-2.5 z=$fp1z-31387-125000
+place PITWALL x=$fp1x-7975-200 y=$fp1y-4070 z=$fp1z+8213
+place PITWALL2 x=$fp1x-18375-200 y=$fp1y-3670 z=$fp1z+18120.5
+place PITWALL2 x=$fp1x+2425-200 y=$fp1y-3670 z=$fp1z+18120.5
+place PITFLOOR x=$fp1x-7975-200 y=$fp1y-7740 z=$fp1z+18120.5
+
+place PIT2FLOOR x=$fp1x-7975-19600/2-7000+16100/2-200 y=$fp1y-7740-11040+9400 z=$fp1z+18120.5+19015/2+40800/2
+place PIT2WALL x=$fp1x-7975-19600/2-7000-400-200-200 y=$fp1y-7740-11040+9400+8980/2+400 z=$fp1z+18120.5+19015/2+40800/2
+place PIT2WALL2 x=$fp1x-7975-19600/2-7000+16100/2-200 y=$fp1y-7740-11040+9400+8980/2+400 z=$fp1z+18120.5+19015/2+40800/2+40800/2+200+400
+place PIT2WALL3 x=$fp1x-7975-19600/2-7000+16100+400+200-200 y=$fp1y-7740-11040+9400+8980/2+400 z=$fp1z+18120.5+19015/2+40800-33500/2
+place PIT2WALL4 x=$fp1x-7975-19600/2-7000+6000/2-200 y=$fp1y-7740-11040+9400+8980/2+400 z=$fp1z+18120.5+19015/2-200-400
+
+### TARGET SHIELDING H4 VLE
+
+box FLOOR1 width=5600 height=800 length=9600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box FLOOR2 width=4800 height=800 length=4800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box FLOOR3 width=4800 height=800 length=8000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box FLOOR4 width=4800 height=800 length=4000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box FLOOR1b width=4800 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box H4SUPPORTBOX width=800 height=600 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box H4SUPPORTBOX2 width=800 height=800 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box H4SUPPORTBOX3 width=800 height=600 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box H4SUPPORTBOX4 width=800 height=1600 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box H4SUPPORTBOX5 width=800 height=1400 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box H4SUPPORTBOX6 width=800 height=400 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box BLOCKtarg1 width=2400 height=2400 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box BLOCKtarg2 width=1600 height=2400 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box BLOCKtarg2b width=1600 height=2800 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box BLOCKtarg3 width=800 height=2400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box ROOF1 width=4000 height=800 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box ROOF2 width=4000 height=800 length=400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALL1 width=1600 height=3200 length=8000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box WALL2a width=800 height=3200 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALL2b width=800 height=2400 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALL2c width=800 height=3200 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALL2d width=800 height=3200 length=4000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box DQBLOCK1 width=3200 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK2 width=800 height=800 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK3 width=800 height=400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK4 width=1600 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box DQBLOCK5 width=1600 height=1200 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK5a width=800 height=1200 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK5b width=800 height=1200 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box DQBLOCK6 width=2400 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK6a width=1600 height=800 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+box DQBLOCK6b width=800 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box DQIBLOCK1 width=400 height=1600 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+box tmp width=1000 height=750 length=1600
+box tmp2 width=1100 height=850 length=1800
+boolean op=subtraction DQIBLOCK2 tmp tmp2 rotation=Z-10.98,X-6.4 x=-115 y=-150-100 material=Fe color=1,1,1,1
+
+box DCBLOCK1 width=800 height=2000 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DCBLOCK1a width=800 height=1600 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DCBLOCK1b width=800 height=400 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box DCBLOCK2 width=2000 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DCBLOCK2a width=1600 height=800 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+box DCBLOCK2b width=400 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box tmp width=680 height=425 length=1600
+box tmp3 width=690 height=425 length=1800
+boolean op=subtraction tmp2 tmp tmp3 rotation=X-6.4 y=-350 material=Fe color=1,1,1,1
+tube tmp radius=150 length=1800
+boolean op=subtraction tmp3 tmp2 tmp rotation=X-6.4 y=-200 material=Fe color=1,1,1,1
+box tmp width=680 height=425 length=1154
+boolean op=subtraction DCIBLOCK1 tmp3 tmp rotation=Z10.98,X-6.4 y=-150 x=50 material=Fe color=1,1,1,1
+
+box DUMPfeet width=1600 height=600 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DUMPbody width=1600 height=1600 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DUMPneck width=800 height=800 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DUMPhead width=1600 height=800 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DUMPiron width=800 height=800 length=2600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box BRIDGEblock1 width=800 height=1600 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box BRIDGEblock2 width=800 height=400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box BRIDGEblock3 width=800 height=1600 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box BRIDGEblock4 width=800 height=200 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box BRIDGEblock5 width=800 height=400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box CONCFEET1 width=5600 height=6400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box CONCFEET2 width=5600 height=8000 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box CONCFEET3 width=4800 height=7200 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box CONCFEET3b width=4800 height=6400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box CONCFEET4 width=4800 height=4800 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box CONCFEETADD width=4800 height=800 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+place FLOOR1 x=$fp4x y=$fp4y z=$fp4z
+place FLOOR2 x=$fp4x-400 y=$fp4y z=$fp4z+7200
+place FLOOR3 x=$fp4x-400 y=$fp4y-800 z=$fp4z+13600
+place FLOOR4 x=$fp4x-2200 y=$fp4y-2400 z=$fp4z+19600
+place FLOOR1b x=$fp4x-400 y=$fp4y z=$fp4z-5600
+
+place H4SUPPORTBOX x=$fp4x+600 y=$fp4y+700 z=$fp4z-4350
+
+place H4SUPPORTBOX2 x=$fp4x+520 y=$fp4y+800 z=$fp4z-4350+1200
+place H4SUPPORTBOX2 x=$fp4x+520 y=$fp4y+800 z=$fp4z-4350+1200+800+700
+place H4SUPPORTBOX2 x=$fp4x+520 y=$fp4y+800 z=$fp4z-4350+1200+800+700+468+800
+place H4SUPPORTBOX2 x=$fp4x+520 y=$fp4y+800 z=$fp4z-4350+1200+800+700+468+800+700+800
+place H4SUPPORTBOX3 x=$fp4x+520+230 y=$fp4y+700 z=$fp4z-4350+1200+800+700+468+800+700+800+941
+place H4SUPPORTBOX2 x=$fp4x+520 y=$fp4y+800 z=$fp4z-4350+1200+800+700+468+800+700+800+941+800
+place H4SUPPORTBOX2 x=$fp4x+520 y=$fp4y+800 z=$fp4z-4350+1200+800+700+468+800+700+800+941+800+800
+
+
+
+place BLOCKtarg1 x=$fp4x-1575 y=$fp4y+1600 z=$fp4z-4400
+place BLOCKtarg2 x=$fp4x+2000 y=$fp4y+1600 z=$fp4z-4400
+place BLOCKtarg3 x=$fp4x+1600 y=$fp4y+1600 z=$fp4z-5600
+place ROOF1 x=$fp4x y=$fp4y+3200 z=$fp4z-4400
+
+place WALL1 x=$fp4x+2000 y=$fp4y+2000 z=$fp4z
+place WALL1 x=$fp4x-2000 y=$fp4y+2000 z=$fp4z
+
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+1*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+2*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+3*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+4*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+5*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+6*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+7*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+8*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+9*800
+place ROOF1 x=$fp4x y=$fp4y+4000 z=$fp4z-4400+10*800
+
+place WALL2a x=$fp4x-2400 y=$fp4y+2000 z=$fp4z+5200
+place WALL2b x=$fp4x-2400 y=$fp4y+1600 z=$fp4z+8000
+place WALL2c x=$fp4x-2400 y=$fp4y+1200 z=$fp4z+11200
+place WALL2d x=$fp4x+1600 y=$fp4y+1200 z=$fp4z+12400+800
+place ROOF1 x=$fp4x-400 y=$fp4y+3200 z=$fp4z+12400
+
+box DQBLOCK1 width=3200 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK2 width=800 height=800 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK3 width=800 height=400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK4 width=1600 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box DQBLOCK5 width=1600 height=1200 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK5a width=800 height=1200 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK5b width=800-0.001 height=1200 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box DQBLOCK6 width=2400 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DQBLOCK6a width=1600 height=800 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+box DQBLOCK6b width=800-0.001 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box DQIBLOCK1 width=400 height=1600 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box tmp width=1000-0.001 height=800-0.001 length=1600
+box tmp2 width=783 height=783 length=1800
+box tmp4 width=1000-0.001 height=800-0.001 length=1800
+#{-13.8336, 8.44317, -42.9897}
+#{0.0394577,6.21909,-0.0395472}
+#{-2.86304, 214.324, 73.1115}
+boolean op=subtraction tmp3 tmp tmp2 x=2.86304 y=-214.324 z=-73.1115 rotation=Z-0.0394577,Y-6.21909,Z0.0395472,Z-42.9897,Y8.44317,Z-13.8336,Z-45 
+boolean op=subtraction DQIBLOCK2 tmp3 tmp4 x=2.86304-500 y=-214.324-215 z=-73.1115 rotation=Z-0.0394577,Y-6.21909,Z0.0395472,Z-42.9897,Y8.44317,Z-13.8336,Z-45  material=Fe color=0.8,0.8,0.8
+
+box DQIBLOCK3 width=1000-0.001 height=60 length=1600-0.001 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+
+box DCBLOCK1 width=800 height=2000 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DCBLOCK1a width=800 height=1600 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DCBLOCK1b width=800 height=400 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box DCBLOCK2 width=2000 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DCBLOCK2a width=1600 height=800 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+box DCBLOCK2b width=250-0.001 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box tmp width=680-0.001 height=425-0.001 length=1600
+box tmp3 width=690 height=425 length=1800
+boolean op=subtraction tmp2 tmp tmp3 rotation=X-6.4 y=-350 material=Fe color=1,1,1,1
+tube tmp radius=155 length=1800
+#{-12.9312,-182.63,-53.7458}
+boolean op=subtraction tmp3 tmp2 tmp x=-12.9312 y=-182.63 z=-53.7458 rotation=Z-0.0394577,Y-6.21909,Z0.0395472,Z-42.9897,Y8.44317,Z-13.8336 material=Fe color=1,1,1,1
+box tmp width=350 height=350 length=1001
+boolean op=subtraction DCIBLOCK1 tmp3 tmp x=-12.9312 y=-182.63 z=-53.7458 rotation=Z-0.0394577,Y-6.21909,Z0.0395472,Z-42.9897,Y8.44317,Z-13.8336 material=Fe color=1,1,1,1
+
+box DCIBLOCK2 width=680 height=60 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+place DQBLOCK1 x=$fp4x+400 y=$fp4y z=$fp4z+12400-2000
+place DQBLOCK4 x=$fp4x+1200 y=$fp4y+800 z=$fp4z+12400-2000
+place DQBLOCK2 x=$fp4x y=$fp4y+800 z=$fp4z+12400-2400
+place DQBLOCK3 x=$fp4x-800 y=$fp4y+600 z=$fp4z+12400-2000
+
+place DQBLOCK5a x=$fp4x+1200+145+358*cos(5.07/180*3.1415) y=$fp4y+800+1000 z=$fp4z+12400-2000-85+358*sin(5.07/180*3.1415) rotation=Y-5.07
+place DQBLOCK5b x=$fp4x+1200+145-442*cos(5.07/180*3.1415) y=$fp4y+800+1000 z=$fp4z+12400-2000-85-442*sin(5.07/180*3.1415) rotation=Y-5.07
+
+place DQBLOCK6a x=$fp4x+1200+145-(1350)*cos(5.07/180*3.1415) y=$fp4y+800+2000 z=$fp4z+12400-2000-85-(1350)*sin(5.07/180*3.1415) rotation=Y-5.07
+place DQBLOCK6b x=$fp4x+1200+145-(150)*cos(5.07/180*3.1415) y=$fp4y+800+2000 z=$fp4z+12400-2000-85-(150)*sin(5.07/180*3.1415) rotation=Y-5.07
+
+place DQIBLOCK1 x=$fp4x+1200+145-2042*cos(5.07/180*3.1415) y=$fp4y+800+800 z=$fp4z+12400-2000-85-2042*sin(5.07/180*3.1415) rotation=Y-5.07
+
+place DQIBLOCK2 x=$fp4x+1200+145-(1342)*cos(5.07/180*3.1415) y=$fp4y+800+1200-60 z=$fp4z+12400-2000-85-(1342)*sin(5.07/180*3.1415) rotation=Y-5.07 color=1,1,1
+
+place DQIBLOCK3 x=$fp4x+1200+145-(1342)*cos(5.07/180*3.1415) y=$fp4y+800+1200-60+430 z=$fp4z+12400-2000-85-(1342)*sin(5.07/180*3.1415) rotation=Y-5.07 color=1,1,1
+
+place DCBLOCK2a x=$fp4x+1200+145-(1350-125)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000 z=$fp4z+12400-2000-85-(1350-125)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+place DCBLOCK2b x=$fp4x+1200+145-(150-125+275)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000 z=$fp4z+12400-2000-85-(150-125+275)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+
+place DCBLOCK1a x=$fp4x+1200+145-(150-125-278+830)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000-1400-200 z=$fp4z+12400-2000-85-(150-125-278+830)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+place DCBLOCK1b x=$fp4x+1200+145-(150-125-278+830)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000-1400+800 z=$fp4z+12400-2000-85-(150-125-278+830)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+
+place DCBLOCK1a x=$fp4x+1200+145-(150-125-278+830+1500)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000-1400-200 z=$fp4z+12400-2000-85-(150-125-278+830+1500)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+place DCBLOCK1b x=$fp4x+1200+145-(150-125-278+830+1500)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000-1400+800 z=$fp4z+12400-2000-85-(150-125-278+830+1500)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+
+place DCIBLOCK1 x=$fp4x+1200+145-(150-125-278+830+750)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000-625-60 z=$fp4z+12400-2000-85-(150-125-278+830+750)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+
+place DCIBLOCK2 x=$fp4x+1200+145-(150-125-278+830+750)*cos(5.07/180*3.1415)+2075*sin(5.07/180*3.1415) y=$fp4y+800+2000-625-60+425./2+30 z=$fp4z+12400-2000-85-(150-125-278+830+750)*sin(5.07/180*3.1415)-2075*cos(5.07/180*3.1415) rotation=Y-5.07
+
+
+
+place BRIDGEblock1 x=$fp4x-2400 y=$fp4y+400 z=$fp4z+13600+2800
+place BRIDGEblock1 x=$fp4x-2400+3600+170-400 y=$fp4y+400 z=$fp4z+13600+2800
+place BRIDGEblock4 x=$fp4x-2400 y=$fp4y+400+900 z=$fp4z+13600+2800+800
+place BRIDGEblock4 x=$fp4x-2400+3600+170-400 y=$fp4y+400+900 z=$fp4z+13600+2800+800
+place BRIDGEblock5 x=$fp4x-2400 y=$fp4y+400+1000 z=$fp4z+13600+2800-400
+place BRIDGEblock5 x=$fp4x-2400+3600+170-400 y=$fp4y+400+1000 z=$fp4z+13600+2800-400
+place ROOF1 x=$fp4x-800 y=$fp4y+400+900+100+400 z=$fp4z+13600+2800+800
+place ROOF1 x=$fp4x-800 y=$fp4y+400+900+100+400+800 z=$fp4z+13600+2800+800
+place ROOF1 x=$fp4x-800 y=$fp4y+400+900+100+400+200 z=$fp4z+13600+2800
+place ROOF1 x=$fp4x-800 y=$fp4y+400+900+100+400+800+200 z=$fp4z+13600+2800
+
+place H4SUPPORTBOX4 x=$fp4x-1000 y=$fp4y-2400+1200 z=$fp4z+13600+2800+800+800
+place H4SUPPORTBOX5 x=$fp4x-1000 y=$fp4y-2400+1200-100 z=$fp4z+13600+2800+800+800+800
+
+place BLOCKtarg2b x=$fp4x-2975 y=$fp4y-600 z=$fp4z+19650 rotation=Y-8
+place BLOCKtarg2b x=$fp4x-2975+800*sin(8*$PI/180) y=$fp4y-600 z=$fp4z+19650-800*cos(8*$PI/180) rotation=Y-8
+place ROOF1 x=$fp4x-2775+1200*cos(8./180.*3.1415)+200 y=$fp4y+1200 z=$fp4z+19650+1200*sin(8./180.*3.1415) rotation=Y-8
+place ROOF1 x=$fp4x-2775+1200*cos(8./180.*3.1415)+200+400*sin(8*$PI/180) y=$fp4y+1200+800 z=$fp4z+19650+1200*sin(8./180.*3.1415)-400*cos(8*$PI/180) rotation=Y-8
+place ROOF2 x=$fp4x-2775+1200*cos(8./180.*3.1415)+200+600*sin(8*$PI/180) y=$fp4y+1200 z=$fp4z+19650+1200*sin(8./180.*3.1415)-600*cos(8*$PI/180) rotation=Y-8
+
+place H4SUPPORTBOX6 x=$fp4x-3055-200-40+600+1200*cos(8./180.*3.1415)+200-1000*sin(8*$PI/180) y=$fp4y-2400+800+200 z=$fp4z+20000+1200*sin(8./180.*3.1415)+1000*cos(8*$PI/180) rotation=Y-8
+
+place CONCFEET1 x=$fp4x y=$fp4y-4000+10 z=$fp4z-4000
+place CONCFEET1 x=$fp4x y=$fp4y-4000+10 z=$fp4z-4000+4600
+
+place CONCFEET2 x=$fp4x y=$fp4y-800-4000 z=$fp4z-4000+4600+4600
+
+place CONCFEET3 x=$fp4x-400 y=$fp4y-800-800-3600 z=$fp4z-4000+4600+4600+4400
+place CONCFEET3 x=$fp4x-400 y=$fp4y-800-800-3600 z=$fp4z-4000+4600+4600+4400+4000
+place CONCFEET3b x=$fp4x-400 y=$fp4y-800-1600-3200 z=$fp4z-4000+4600+4600+4400+4000+3200
+
+place CONCFEETADD x=$fp4x-400 y=$fp4y-800-800+400 z=$fp4z-4000+4600+4600+4400-400
+place CONCFEETADD x=$fp4x-400 y=$fp4y-800-1600+400 z=$fp4z-4000+4600+4600+4400+4000+3200+400
+
+place CONCFEET4 x=$fp4x-2200 y=$fp4y-800-1600-6400+2400 z=$fp4z-4000+4600+4600+4400+4000+3200+1200
+place CONCFEET4 x=$fp4x-2200 y=$fp4y-800-1600-6400+2400 z=$fp4z-4000+4600+4600+4400+4000+3200+1200+3200
+
+place CONCFEETADD x=$fp4x-2200 y=$fp4y-800-1600-6400+2400+2800 z=$fp4z-4000+4600+4600+4400+4000+3200+1200
+place CONCFEETADD x=$fp4x-2200 y=$fp4y-800-1600-6400+2400+2800 z=$fp4z-4000+4600+4600+4400+4000+3200+1200+3200
+
+### SHIELDING IN FRONT OF PIT
+
+box ROOFBACK width=6000 height=600 length=8000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box ROOFBACK2 width=6000 height=600 length=4000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALLBACKLEFT width=800 height=3200 length=8000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALLBACKRIGHT1 width=800 height=3200 length=5600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALLBACKRIGHT2 width=800 height=3200 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box IWALL1 width=3200 height=3100 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box IWALL2 width=3200 height=3100 length=800-0.001 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box IWALL3 width=3200 height=3100 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box HOLE width=400 height=800+2 length=800+2 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+boolean op=subtraction IWALL2HOLE IWALL2 HOLE x=-1000 y=-1151 color=0.5,0.8,0.8,1
+
+box BACKSHIELD1 width=800 height=200.0 length=800.0 material=STAINLESS-STEEL color=0.8,0.8,0.8 kill=0
+box BACKSHIELD2 width=400 height=400.0 length=800.0 material=STAINLESS-STEEL color=0.8,0.8,0.8 kill=0
+box BACKSHIELD3 width=200 height=800.0 length=800.0 material=STAINLESS-STEEL color=0.8,0.8,0.8 kill=0
+box BACKSHIELD4 width=1600 height=400.0 length=400.0 material=STAINLESS-STEEL color=0.8,0.8,0.8 kill=0
+box BACKSHIELD5 width=800 height=400.0 length=400.0 material=STAINLESS-STEEL color=0.8,0.8,0.8 kill=0
+box BACKSHIELD6 width=1000 height=200.0 length=400.0 material=STAINLESS-STEEL color=0.8,0.8,0.8 kill=0
+box BACKSHIELD7 width=100 height=100.0 length=200.0 material=STAINLESS-STEEL color=0.8,0.8,0.8 kill=0
+
+place WALLBACKLEFT  x=$fp1x-400 y=$fp1y+1600 z=$fp1z+4000
+place WALLBACKRIGHT1  x=$fp1x-6000 y=$fp1y+1600 z=$fp1z+2800
+place WALLBACKRIGHT2  x=$fp1x-6100 y=$fp1y+1600 z=$fp1z+6800
+place ROOFBACK  x=$fp1x-3000 y=$fp1y+3500 z=$fp1z+4200
+place ROOFBACK2  x=$fp1x-9000 y=$fp1y+3500 z=$fp1z+2200
+place IWALL1  x=$fp1x-2400 y=$fp1y+1550 z=$fp1z+7600
+place IWALL2HOLE  x=$fp1x-4000+76.7 y=$fp1y+1550 z=$fp1z+5200
+place IWALL3  x=$fp1x-8000 y=$fp1y+1550 z=$fp1z+1200
+
+
+param artificialShift=-37
+### shifted downwards to not collide with XCET
+
+place BACKSHIELD1 x=$fp1x-5200 y=$fp1y+200+$artificialShift z=$fp1z+4400
+place BACKSHIELD2 x=$fp1x-5154-1 y=$fp1y+500+$artificialShift z=$fp1z+4400
+place BACKSHIELD3 x=$fp1x-5454-1 y=$fp1y+700+$artificialShift z=$fp1z+4400
+place BACKSHIELD4 x=$fp1x-4554 y=$fp1y+900+$artificialShift z=$fp1z+4600
+place BACKSHIELD5 x=$fp1x-4273.3 y=$fp1y+500+$artificialShift z=$fp1z+4600
+place BACKSHIELD6 x=$fp1x-4300 y=$fp1y+200+$artificialShift z=$fp1z+4600
+place BACKSHIELD7 x=$fp1x-4273.3-450 y=$fp1y+350+$artificialShift z=$fp1z+4500
+place BACKSHIELD7 x=$fp1x-4273.3-450 y=$fp1y+350+$artificialShift z=$fp1z+4700
+place BACKSHIELD7 x=$fp1x-4273.3-550 y=$fp1y+350+$artificialShift z=$fp1z+4500
+
+
+box ROOFBACK3 width=6000 height=600 length=2000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALLBACKRIGHT3 width=800 height=3200 length=8000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box WALLBACKRIGHT3a1 width=800 height=2400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALLBACKRIGHT3a2 width=3200 height=1600 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box WALLBACKRIGHT3a3 width=3200 height=800 length=800 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+#place ROOFBACK3  x=$fp1x-15000 y=$fp1y+3500 z=$fp1z+1200
+place WALLBACKRIGHT3  x=$fp1x-12000 y=$fp1y+1600 z=$fp1z+4000
+place WALLBACKRIGHT3a1  x=$fp1x-11200 y=$fp1y+1200 z=$fp1z-650
+place WALLBACKRIGHT3a2  x=$fp1x-11200+140 y=$fp1y+800 z=$fp1z-1850
+place WALLBACKRIGHT3a3  x=$fp1x-11200+140 y=$fp1y+2000 z=$fp1z-1850
+
+
+
+
+### SIDE SHIELDING
+
+box SIDESHIELD1 width=800 height=4800 length=12800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box SIDESHIELD2 width=800 height=5600 length=11200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box SIDESHIELD3 width=800 height=5600 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box QBOTTOM1 width=2400 height=800 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box QBOTTOM2 width=800 height=1200 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box QBOTTOM3 width=800 height=800 length=3200-100 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box QBOTTOM4 width=800 height=3400 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box QBOTTOM5 width=1600 height=400 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box IRONSHIELD1 width=800 height=800 length=200 material=Fe color=0.8,0.8,0.8,1 kill=0
+box IRONSHIELD2 width=800 height=200 length=800 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+place SIDESHIELD1  x=$fp2x+400 y=$fp2y+2400 z=$fp2z+2850
+place SIDESHIELD2  x=$fp2x+1200 y=$fp2y+2800 z=$fp2z+450
+place SIDESHIELD3  x=$fp2x+1100 y=$fp2y+2800 z=$fp2z-6350
+
+place QBOTTOM1  x=$fp2x-1200 y=$fp2y+400 z=$fp2z+1600
+place QBOTTOM2  x=$fp2x-400 y=$fp2y+1400 z=$fp2z+1600
+place QBOTTOM3  x=$fp2x-400 y=$fp2y+3200 z=$fp2z+1600+50
+place QBOTTOM4  x=$fp2x-400 y=$fp2y+1700 z=$fp2z+3600
+place QBOTTOM5  x=$fp2x-2400+800 y=$fp2y+200 z=$fp2z+3600
+
+place IRONSHIELD1 x=$fp2x-510 y=$fp2y+2400 z=$fp2z+200
+place IRONSHIELD1 x=$fp2x-510 y=$fp2y+2400 z=$fp2z+400
+
+place IRONSHIELD1 x=$fp2x-540 y=$fp2y+2400 z=$fp2z+600
+place IRONSHIELD1 x=$fp2x-540 y=$fp2y+2400 z=$fp2z+800
+
+place IRONSHIELD1 x=$fp2x-560 y=$fp2y+2400 z=$fp2z+1000
+place IRONSHIELD1 x=$fp2x-560 y=$fp2y+2400 z=$fp2z+1200
+
+place IRONSHIELD1 x=$fp2x-570 y=$fp2y+2400 z=$fp2z+1400
+
+
+place IRONSHIELD2 x=$fp2x-400 y=$fp2y+2100 z=$fp2z+2000
+place IRONSHIELD2 x=$fp2x-400 y=$fp2y+2300 z=$fp2z+2000
+place IRONSHIELD2 x=$fp2x-400 y=$fp2y+2500 z=$fp2z+2000
+place IRONSHIELD2 x=$fp2x-630 y=$fp2y+2700 z=$fp2z+2000
+place IRONSHIELD2 x=$fp2x-400 y=$fp2y+2100 z=$fp2z+2800
+place IRONSHIELD2 x=$fp2x-400 y=$fp2y+2300 z=$fp2z+2800
+place IRONSHIELD2 x=$fp2x-487 y=$fp2y+2500 z=$fp2z+2800
+place IRONSHIELD2 x=$fp2x-750 y=$fp2y+2700 z=$fp2z+2800
+
+
+### SECONDARY TARGET SHIELDING
+
+box TARGWALLRIGHT width=800 height=4000 length=9600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWALLLEFT width=800 height=4000 length=20000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWALLLEFT2 width=800 height=800 length=9600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWALLLEFT3 width=800 height=1600 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGROOF width=4000 height=800 length=9200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGBOTTOM width=2800 height=1200 length=8000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWALLRIGHT2 width=800 height=5200 length=21000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box TARGWLP0x1 width=800 height=4000 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box TARGWLP1x1 width=800 height=1600 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWLP1x2 width=200 height=400 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWLP1x3 width=800 height=800 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWLP1x4 width=800 height=1600 length=3200 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box TARGWLP2x1 width=200 height=400 length=4800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWLP2x2 width=400 height=800 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWLP2x3 width=600 height=1600 length=3200 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box TARGWLP3x1 width=400 height=400 length=8000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWLP3x2 width=400 height=800 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box TARGWLP3x3 width=400 height=1600 length=3200 material=Fe color=0.8,0.8,0.8,1 kill=0
+
+box DIPBOTTOM1 width=1600 height=800 length=2400 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box DIPBOTTOM2 width=1600 height=400 length=1600 material=Fe color=0.8,0.8,0.8,1 kill=0
+box DIPBOTTOM3 width=400 height=800 length=2000 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+box SUPPORTBOX width=650 height=394 length=467 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box SUPPORTBOX2 width=900 height=620 length=506 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+
+place TARGWALLRIGHT x=$fp3x+400 y=$fp3y+2000 z=$fp3z+4800
+place TARGROOF x=$fp3x+2400 y=$fp3y+4400 z=$fp3z+4600
+place TARGWALLLEFT x=$fp3x+4000 y=$fp3y+2000 z=$fp3z+1630
+place TARGWALLLEFT2 x=$fp3x+4000 y=$fp3y+5200 z=$fp3z+4450
+place TARGWALLLEFT3 x=$fp3x+4000 y=$fp3y+4800 z=$fp3z+10450
+place TARGBOTTOM x=$fp3x+2200 y=$fp3y+600 z=$fp3z+5600
+place TARGWALLRIGHT2 x=$fp3x-3800 y=$fp3y+2600 z=$fp3z+4800+11932 # placed according to old shielding
+
+place TARGWLP0x1 x=$fp3x+3200 y=$fp3y+2000 z=$fp3z-800
+
+place TARGWLP1x1 x=$fp3x+3200 y=$fp3y+800 z=$fp3z+800
+place TARGWLP1x2 x=$fp3x+2900 y=$fp3y+1400 z=$fp3z+3200
+place TARGWLP1x3 x=$fp3x+3200 y=$fp3y+3600 z=$fp3z+1600
+place TARGWLP1x4 x=$fp3x+3200 y=$fp3y+2400 z=$fp3z+1600
+
+place TARGWLP2x1 x=$fp3x+3100 y=$fp3y+1400 z=$fp3z+4000
+place TARGWLP2x2 x=$fp3x+3400 y=$fp3y+3600 z=$fp3z+4800
+place TARGWLP2x3 x=$fp3x+3300 y=$fp3y+2400 z=$fp3z+4800
+
+place TARGWLP3x1 x=$fp3x+3400 y=$fp3y+1400 z=$fp3z+5600
+place TARGWLP3x2 x=$fp3x+3400 y=$fp3y+3600 z=$fp3z+8000
+place TARGWLP3x3 x=$fp3x+3400 y=$fp3y+2400 z=$fp3z+8000
+
+place DIPBOTTOM3 x=$fp3x+3400 y=$fp3y+800 z=$fp3z+10600
+place DIPBOTTOM1 x=$fp3x+2400 y=$fp3y+800 z=$fp3z+10800
+place DIPBOTTOM2 x=$fp3x+2550 y=$fp3y+600 z=$fp3z+12800
+
+place SUPPORTBOX x=$fp3x+2214 y=$fp3y+1397 z=$fp3z+3482.5
+
+place SUPPORTBOX x=$fp3x+2599 y=$fp3y+1397 z=$fp3z+5224.5
+place SUPPORTBOX x=$fp3x+1949 y=$fp3y+1397 z=$fp3z+5224.5
+
+place SUPPORTBOX x=$fp3x+2314 y=$fp3y+1397 z=$fp3z+6357.5
+
+place SUPPORTBOX x=$fp3x+2699 y=$fp3y+1397 z=$fp3z+8099.5
+place SUPPORTBOX x=$fp3x+2049 y=$fp3y+1397 z=$fp3z+8099.5
+
+place SUPPORTBOX x=$fp3x+2434 y=$fp3y+1397 z=$fp3z+9801.5
+
+place SUPPORTBOX x=$fp3x+2819 y=$fp3y+1397 z=$fp3z+11543.5
+place SUPPORTBOX x=$fp3x+2169 y=$fp3y+1397 z=$fp3z+11543.5
+
+place SUPPORTBOX2 x=$fp3x+2509 y=$fp3y+310 z=$fp3z+14713
+
+place SUPPORTBOX2 x=$fp3x+3036 y=$fp3y+310 z=$fp3z+16445
+place SUPPORTBOX2 x=$fp3x+1896 y=$fp3y+310 z=$fp3z+16445
+
+place SUPPORTBOX2 x=$fp3x+2404 y=$fp3y+310 z=$fp3z+18111
+
+place SUPPORTBOX x=$fp3x+2324 y=$fp3y+997 z=$fp3z+20670.5
+
+place SUPPORTBOX2  x=$fp2x-1600 y=$fp2y+710 z=$fp2z+3600
+
+### BUNKER H4 VLE 
+
+group H4Bunker length=5600 height=3200
+
+box FRONTWALL width=800 height=2400 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box FRONTROOF width=2400 height=800 length=1600 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box CONCBOTTOM width=1600 height=1600 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0 
+box CONCTAB width=800 height=1000 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0 
+box BACKWALL width=1600 height=2400 length=800 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box CONCBOTTOM width=1600 height=1600 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0 
+box CONCLEFT width=400 height=800 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0 
+box CONCRIGHT width=800 height=1600 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0
+box CONCTOP width=1600 height=400 length=3200 material=CONCRETE color=0.5,0.8,0.8,1 kill=0 
+
+box IRONTOP width=1600 height=400 length=3200 material=Fe color=0.8,0.8,0.8 kill=0
+box IRONBOTTOM width=800 height=800 length=3200 material=Fe color=0.8,0.8,0.8 kill=0
+box IRONLEFT width=800 height=800 length=3200 material=Fe color=0.8,0.8,0.8 kill=0
+box IRONRIGHT width=400 height=800 length=3200 material=Fe color=0.8,0.8,0.8 kill=0
+
+param alx=0 aly=-1600 alz=-2800
+
+place FRONTWALL x=$alx-1200 y=$aly+1200 z=$alz+800
+place FRONTWALL x=$alx+1200 y=$aly+1200 z=$alz+800
+place FRONTROOF x=$alx y=$aly+2800 z=$alz+800
+place CONCBOTTOM x=$alx-1200 y=$aly+800 z=$alz+3200
+place CONCBOTTOM x=$alx+1200 y=$aly+800 z=$alz+3200
+place CONCTAB x=$alx+0 y=$aly+500 z=$alz+3200
+place BACKWALL x=$alx+1200 y=$aly+1200 z=$alz+5200
+place CONCRIGHT x=$alx+1600 y=$aly+2400 z=$alz+3200
+place CONCRIGHT x=$alx-1200 y=$aly+2400 z=$alz+3200
+place CONCLEFT x=$alx+1000 y=$aly+2800 z=$alz+3200
+place CONCTOP x=$alx y=$aly+3000 z=$alz+3200
+
+place IRONTOP x=$alx y=$aly+2600 z=$alz+3200
+place IRONBOTTOM x=$alx+0 y=$aly+1400 z=$alz+3200
+place IRONLEFT x=$alx+800 y=$aly+2000 z=$alz+3200
+place IRONRIGHT x=$alx-600 y=$aly+2000 z=$alz+3200
+
+
+endgroup
+
+place H4Bunker x=$fp1x-12000-400-200-2000 y=$fp1y+1600 z=$fp1z+1300+2800 rotation=Y-2
+
+
+corner z=630660.0 rotation=Y+$shieldRot					 
+
+corner z=405480.0 rotation=Y-0.343774677
+corner z=348455 rotation=X-0.392361498
+corner z=342795 rotation=X-0.392361498
+corner z=337135 rotation=X-0.392361498
+corner z=330325 rotation=X-0.392361498
+corner z=324665 rotation=X-0.392361498
+corner z=319005 rotation=X-0.392361498
+corner z=82715.0 rotation=X+0.391673949
+corner z=77055.0 rotation=X+0.391673949
+corner z=71395.0 rotation=X+0.391673949
+corner z=64585.0 rotation=X+0.391673949
+corner z=58925.0 rotation=X+0.391673949
+corner z=53265.0 rotation=X+0.391673949
+corner z=27250.0 rotation=Y-0.160428183
+corner z=7350.0 rotation=Y-0.320856370
+corner z=3150.0 rotation=Y-0.320856370

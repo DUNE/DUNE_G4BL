@@ -1,0 +1,22 @@
+corner z=657379.0 rotation=Y+3.318572
+corner z=653657.0 rotation=Y+3.318572
+corner z=646264.0 rotation=Y+3.318572	
+corner z=642766.0 rotation=Y+3.318572
+corner z=632293.0 rotation=Z-$rotZ
+
+corner z=405480.0 rotation=Y-0.343774677
+corner z=348455 rotation=X-0.392361498
+corner z=342795 rotation=X-0.392361498
+corner z=337135 rotation=X-0.392361498
+corner z=330325 rotation=X-0.392361498
+corner z=324665 rotation=X-0.392361498
+corner z=319005 rotation=X-0.392361498
+corner z=82715.0 rotation=X+0.391673949
+corner z=77055.0 rotation=X+0.391673949
+corner z=71395.0 rotation=X+0.391673949
+corner z=64585.0 rotation=X+0.391673949
+corner z=58925.0 rotation=X+0.391673949
+corner z=53265.0 rotation=X+0.391673949
+corner z=27250.0 rotation=Y-0.160428183
+corner z=7350.0 rotation=Y-0.320856370
+corner z=3150.0 rotation=Y-0.320856370

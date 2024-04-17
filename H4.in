@@ -1,0 +1,14 @@
+# H4 Beam Line Simulation - HT - Based on H2-TILT17-"TILTED" files #
+#	
+#
+# Version
+param version=34b
+#
+#
+# Created: N. Charitonidis, I .Efthymiopoulos and Y.Karyotakis *** December 2016 ***
+# All Horizontal, Vacuum Elements, Spectrometer, TOF & Cherenkovs
+# M. Rosenthal implemented the shielding and the magnet model - March 2017.
+
+include H4header.in
+include H4main.in
+include H4footer.in
